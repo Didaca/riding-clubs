@@ -1,0 +1,41 @@
+{% extends 'bases/base.html' %}
+{% load static %}
+
+{% block co_base %}
+        <div class="wrapper">
+            <div class="profile-content">
+                <div class="profile-pic">
+                    {% if object.picture %}
+                        <!-- the true order-->
+                        <!-- <img src="{{ object.picture.url }}" alt="Cover Image"> -->
+                        <!-- for presentation-->
+                    <img src="{% static "images/basic_pictures/base_profile_pictures.jpg" %}" alt="Cover Image">
+                    {% else %}
+                    <img src="{% static "images/basic_pictures/base_image_profile.png" %}" alt="Profile Image">
+                    {% endif %}
+                    <div class="actionBtn">
+                    <ul>
+                        <li><a href="{% url 'delete profile' object.pk %}" class="remove">Delete</a></li>
+                        <li><a href="{% url 'edit profile' object.pk %}" class="edit">Edit</a></li>
+                    </ul>
+                </div>
+                </div>
+                <div class="profile-info">
+                    <p><i>{{ object.full_name }}</i></p>
+                    <div class="profile-email">
+                        <div><i class="gg-mail"></i></div>
+                        <p>{{ object.email }}</p>
+                    </div>
+                    <div class="profile-phone">
+                        <div><i class="gg-smartphone-shake"></i></div>
+                        <p>{{ object.phone_number }}</p>
+                    </div>
+                    <div class="profile-gender">
+                        <span>G:</span>
+                        <p>{{ object.gender }}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    <script>document.querySelectorAll('.drop-enter a').forEach(a => a.style.color = '#486F38');</script>
+{% endblock %}

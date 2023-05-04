@@ -1,0 +1,26 @@
+{% extends 'bases/base.html' %}
+{% load static %}
+
+{% block co_base %}
+    <div class="back-ground-club-info">
+        <div class="main-div-breed">
+        <!-- only for demo -->
+            {% if object.breed == 'East Bulgarian' %}
+            <img src="{% static "images/breeds_pictures/base-East-BG.jpg" %}" alt="Breed Picture">
+            {% elif object.breed == 'Friesian' %}
+            <img src="{% static "images/breeds_pictures/base-friesian.jpg" %}" alt="Breed Picture">
+            {% elif object.breed == 'Thoroughbred' %}
+            <img src="{% static "images/breeds_pictures/base-Thoroughbred-white-color.png" %}" alt="Breed Picture">
+            {% elif object.breed == 'Arab' %}
+            <img src="{% static "images/breeds_pictures/6-Different-Types-Of-Arabian-Horses.jpg" %}" alt="Breed Picture">
+            {% endif %}
+        <!-- -->
+            <p><strong>Breed:</strong>&nbsp;&nbsp;{{ object.breed }}</p>
+            <p><strong>Average Height:</strong>&nbsp;&nbsp;{{ object.average_height }}&nbsp;cm.</p>
+            <p><strong>Color:</strong>&nbsp;&nbsp;{{ object.horse_color }}</p>
+            <p><strong>Uses:</strong>&nbsp;&nbsp;{{ object.common_uses }}</p>
+            <p><strong>Story:</strong>&nbsp;&nbsp;{{ object.breed_description }}</p>
+        </div>
+    </div>
+    <script>document.querySelectorAll('.drop-enter a').forEach(a => a.style.color = '#486F38');</script>
+{% endblock %}

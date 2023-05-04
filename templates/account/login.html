@@ -1,0 +1,22 @@
+{% extends 'bases/base.html' %}
+{% load static %}
+
+{% block co_base %}
+    <div class="body-f">
+        <h1 class="login-section">Login Portal</h1>
+        <div class="login">
+            <form class="login-form" method="post" action="{% url 'login' %}">
+                {% csrf_token %}
+                {{ form }}
+                <input type="submit" value="Log In" />
+            </form>
+            <div>
+                <p>or</p>
+                <a id="go-to-register" href="{% url 'registration' %}">Go to Registration</a>
+            </div>
+        </div>
+    </div>
+    <script>
+        document.querySelectorAll('.drop-enter a').forEach(a => a.style.color = '#486F38');
+    </script>
+{% endblock %}

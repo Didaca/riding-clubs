@@ -1,0 +1,28 @@
+{% extends 'bases/base.html' %}
+
+{% block co_base %}
+    <div class="body-payment">
+        <h1 class="pay-section">Payment</h1>
+        <div class="div-form-pay">
+            <form class="pay-form" method="get" action="{% url 'create club' %}" enctype="multipart/form-data">
+                {% csrf_token %}
+                <label for="p-card" id="p-card-l">card number</label>
+                <input id="p-card-i" type="text" name="text-card">
+                <label for="o-name" id="o-name-l">name on card</label>
+                <input id="o-name-i" type="text" name="text-name">
+                <label for="ex-date" id="ex-date-l">expiry date</label>
+                <input id="ex-date-i" type="text" name="text-date" disabled placeholder="&nbsp;&nbsp;&nbsp;mm&nbsp;/&nbsp;yy"><br><br>
+                <label for="cvv-card" id="cvv-l">cvv/cvc2</label>
+                <input id="cvv-i" type="text" name="cvv-card" disabled>
+                <div class="cards-options">
+                    <i class='fab fa-cc-mastercard' style="font-size: 30px"></i>
+                    <i class="fab fa-cc-visa" style="font-size: 30px"></i>
+                </div>
+                <input type="submit" value="Go To Registration Club" />
+            </form>
+        </div>
+    </div>
+    <script>
+    document.querySelectorAll('.drop-enter a').forEach(a => a.style.color = '#486F38');
+    </script>
+{% endblock %}

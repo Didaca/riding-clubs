@@ -1,0 +1,21 @@
+{% extends 'bases/base.html' %}
+{% load static %}
+
+{% block co_base %}
+    <div class="cl-ed-pg">
+        <fieldset>
+            <legend class="cl-ed">Edit Club Info</legend>
+            <div class="cl-ed-container">
+                <form class="cl-ed-form" method="post" action="{% url 'edit club' object.pk %}" enctype="multipart/form-data">
+                    {% csrf_token %}
+                    {{ form }}
+                    <div>
+                        <a href="#" >Edit Trainers</a>
+                        <button type="submit">Edit Info</button>
+                    </div>
+                </form>
+            </div>
+        </fieldset>
+    </div>
+    <script>document.querySelectorAll('.drop-enter a').forEach(a => a.style.color = '#486F38');</script>
+{% endblock %}

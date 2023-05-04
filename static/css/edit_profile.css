@@ -1,0 +1,91 @@
+.pf-ed, .pass-ed {
+    box-sizing: border-box;
+    width: 320px;
+    height: 850px;
+    margin: auto;
+    padding: 10rem 0 15rem 0;
+}
+
+.cl-ed-pg {
+    box-sizing: border-box;
+    width: 320px;
+    height: 900px;
+    margin: auto;
+    padding: 7rem 0 15rem 0;
+}
+
+.edit-form, .pass-form, .cl-ed-form {
+    min-width: 280px;
+    color: #486F38;
+    font-style: oblique;
+}
+
+legend {
+    font-size: 40px;
+    margin: auto;
+}
+
+form label {
+    font-size: 25px;
+}
+
+
+form input[type=text]:enabled, input[type=password]:enabled, input[type=email]:enabled{
+    width: 100%;
+    margin: 12px 0;
+}
+
+form.cl-ed-form textarea {
+    height: 100px;
+}
+
+form input[type=text]:hover, input[type=password]:hover, input[type=email]:hover {
+    border: 2px solid darkgoldenrod;
+    border-radius: 4px;
+}
+
+form input[type=text]:hover, input[type=password]:hover, input[type=email]:hover {
+    border: 2px solid darkgoldenrod;
+    border-radius: 4px;
+}
+
+form button {
+    background: #61754B;
+    color: white;
+    border: 2px solid transparent;
+    padding: 6px;
+    border-radius: 4px;
+}
+
+form.cl-ed-form>button {
+    background: #61754B;
+    color: white;
+    border: 2px solid transparent;
+    margin-top: 3rem;
+    padding: 6px;
+    border-radius: 4px;
+
+}
+
+form button[type=submit]:hover {
+    border: 2px solid darkgoldenrod;
+    border-radius: 4px;
+    background-color: white;
+    color: #486F38;
+}
+
+.edit-form>div, .cl-ed-form>div {
+    margin-top: 3rem;
+    text-align: center;
+}
+
+.edit-form>div a, .cl-ed-form>div a {
+    text-decoration: none;
+    margin-right: 3rem;
+    color: red;
+}
+
+form.edit-form>div a:hover, .cl-ed-form>div a:hover {
+    text-decoration-line: overline underline;
+}
+

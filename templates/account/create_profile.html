@@ -1,0 +1,29 @@
+{% extends 'bases/base.html' %}
+
+{% block co_base %}
+    <div class="body-f">
+        <h1 class="register-section">Create Profile</h1>
+        <div class="register">
+            <form class="register-form" method="post" action="{% url 'registration' %}" enctype="multipart/form-data">
+                {% csrf_token %}
+                {{ form }}
+                <div id="browse"><p>Browse logo...</p></div>
+                <input type="submit" value="Create Profile" />
+            </form>
+        </div>
+    </div>
+    <script>
+        document.querySelectorAll('.drop-enter a').forEach(a => a.style.color = '#486F38');
+        let p_tag = document.querySelector('#browse p');
+        document.querySelector('input[type=file]').addEventListener("change", () => {
+            p_tag.textContent = document.querySelector('input[type=file]').files[0].name;
+        })
+
+        let p_error = document.querySelector('.ph_error');
+        if (p_error.textContent) {
+            p_error.style.display = 'block';
+        }else {
+            p_error.style.display = 'none';
+        }
+    </script>
+{% endblock %}

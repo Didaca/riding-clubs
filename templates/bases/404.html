@@ -1,0 +1,25 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/html">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" type="text/css" href="{% static "css/base.css" %}" />
+    <link rel="icon" type="image/png" sizes="32x32" href="{% static "images/basic_pictures/favicon-32x32.png" %}">
+    <title>ERROR 404</title>
+</head>
+<body class="error-4body">
+    <div class="page-error-404">
+        <div class="error-404">
+            <img src="{% static "images/basic_pictures/404-3.png" %}" alt="404">
+            <div>
+                <p>We`ve looked practically everywhere. Double-check the URL, go back, or go to the
+                    <a class="er-404" href="{% url "home page" %}">home</a> page.</p>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,60 @@
+.body-payment {
+    width: 600px;
+    height: 850px;
+    text-align: center;
+    margin: 2rem auto;
+    box-sizing: border-box;
+}
+
+.div-form-pay {
+    width: 50%;
+    margin: auto;
+    border: 1px solid #5e503f;
+    border-radius: 6px;
+    text-align: center;
+}
+
+.div-form-pay:hover {
+    border: 3px solid #5e503f;
+    box-shadow: 2px 2px;
+}
+
+form.pay-form {
+    width: 80%;
+    padding: 2rem 0;
+    margin: auto;
+    text-align: left;
+    color: #61754B;
+}
+
+input#cvv-i {
+    width: 40px;
+}
+
+input#ex-date-i {
+    width: 80px;
+}
+
+.cards-options {
+    display: block;
+    float: right;
+    color: #61754B;
+}
+
+form.pay-form input[type=submit] {
+    text-transform: uppercase;
+    width: 250px;
+    margin-top: 3rem;
+    border-radius: 4px;
+    padding: 6px;
+    background-color: #61754B;
+    color: white;
+}
+
+form.pay-form input[type=submit]:hover {
+    cursor: pointer;
+    border: 2px solid darkgoldenrod;
+    border-radius: 4px;
+    background-color: white;
+    color: #61754B;
+}

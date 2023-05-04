@@ -1,0 +1,41 @@
+{% extends "bases/base.html" %}
+{% load static %}
+
+{% block co_base %}
+    <div class="main-video">
+        <video class="horse" autoplay muted loop playsinline>
+            <source src="{% static "video/base_horse_video.mp4" %}" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+        <div class="enter">
+            <div>
+                <h1 class="entry-h1">Discover the greatest riding horse clubs</h1>
+            </div>
+        </div>
+    </div>
+    <div id="welcome">
+        <div class="clubs_entry">
+            <div class="home-left">
+                <div>
+                    <h1 class="w1">welcome</h1>
+                </div>
+                <div>
+                    <h3 class="w2">to our information site</h3>
+                </div>
+                <div>
+                    <p class="w3">
+                        If you want to discover or put your equestrian club on the Internet,
+                        try this fully editable site. It has a professional looking about page that
+                        allows you to present your riding club in the best possible light.
+                        You can talk about its history, specialty,
+                        club coaches and feedback from all potential clients.
+                        You can find out about horse races or horse breeds.
+                    </p>
+                </div>
+            </div>
+            <div class="ema_pic">
+                <img src="{% static "images/clubs_ema_pic/ema.jpg" %}" alt="Ema">
+            </div>
+        </div>
+    </div>
+{% endblock %}

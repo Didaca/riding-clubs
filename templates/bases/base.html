@@ -1,0 +1,83 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" type="text/css" href="{% static "css/base.css" %}" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="icon" type="image/png" sizes="32x32" href="{% static "images/basic_pictures/favicon-32x32.png" %}">
+    <link rel='stylesheet' href='https://css.gg/smartphone.css'>
+    <link rel='stylesheet' href='https://css.gg/keyhole.css'>
+    <link rel='stylesheet' href='https://css.gg/mail.css'>
+    <link rel='stylesheet' href='https://css.gg/smartphone-shake.css'>
+    <link rel='stylesheet' href='https://css.gg/search.css'>
+    <script src="https://kit.fontawesome.com/5cc1ff78db.js" crossorigin="anonymous"></script>
+    <title>Riding Clubs</title>
+</head>
+
+<body>
+    <header>
+        <img src="{% static "images/basic_pictures/horse&girl.png" %}" alt="Base image" />
+        <nav>
+            <ul class="left">
+                <li><a class="select-page" href="{% url 'home page' %}">Home</a></li>
+                {% if request.user.is_staff %}
+                    <li><a class="select-page" href="{% url 'pay page' %}">Horse Club Registration</a></li>
+                {% else %}
+                    <li><a class="select-page" href="{% url 'authorization' %}">Horse Club Registration</a></li>
+                {% endif %}
+                <li><a class="select-page" href="{% url 'list clubs' %}">Clubs</a></li>
+                <li><a class="select-page" href="{% url 'breeds page' %}">Horse Breeds</a></li>
+                <li><a class="select-page" href="{% url 'racing info' %}">Racing</a></li>
+            </ul>
+            <div class="drop-enter">
+                <img src="{% static "images/basic_pictures/base_image_profile.png" %}" alt="Empty image" width="30" height="30" />
+                {% if request.user.is_authenticated %}
+                <div class="entries-in">
+                    <a href="{% url 'details profile' request.user.pk %}">Profile</a>
+                    <a href="{% url 'logout' %}">Logout</a>
+                </div>
+                {% else %}
+                <div class="entries-out">
+                    <a href="{% url 'login' %}">Login</a>
+                    <a href="{% url 'registration' %}">Register</a>
+                </div>
+                {% endif %}
+            </div>
+            <script>
+                document.querySelector('.drop-enter').addEventListener('click', () => {
+                let div = document.querySelector('.drop-enter div');
+                let has_name = div.className.split(' ')[1];
+                if(has_name){
+                    div.classList.remove('switch');
+                } else {
+                    div.classList.add('switch');
+                }
+                })
+
+                document.querySelectorAll('.select-page').forEach(element => {
+                    if(element.href === window.location.href) {
+                        element.classList.add('active');
+                    }
+                })
+            </script>
+        </nav>
+    </header>
+    <main>
+        <section>
+            {% block co_base %}
+            {% endblock %}
+        </section>
+    </main>
+    <footer>
+        <div>
+            <p class="t-left">Copyright&nbsp;&copy;&nbsp; <a href="/">D.V.Ivanov</a></p>
+            <p class="t-right"><a href="https://github.com/Didaca"><img src="{% static "images/basic_pictures/transp-crop.png" %}"></a></p>
+        </div>
+    </footer>
+</body>
+</html>

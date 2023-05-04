@@ -1,0 +1,123 @@
+{% extends 'bases/base.html' %}
+{% load static %}
+
+
+{% block co_base %}
+     <div class="back-ground-club-info">
+        <div class="main-div">
+            <div class="first-div">
+                <div class="f-first-div">
+                    <div class="ff-f-first-div">
+                        <div class="club-name">
+                            <p><strong>{{ club.club_name }}</strong></p>
+                        </div>
+                        <div class="club-category">
+                            {% if club.pk == 1 %}
+                            <img src="{% static "images/club_disciplines/dressage.png" %}" alt="Dressage">
+                            <img src="{% static "images/club_disciplines/show jumping.png" %}" alt="Dressage">
+                            <img src="{% static "images/club_disciplines/vaulting.png" %}" alt="Dressage">
+                            {% else %}
+                            <img src="{% static "images/club_disciplines/endurance.png" %}" alt="Dressage">
+                            <img src="{% static "images/club_disciplines/eventing.png" %}" alt="Dressage">
+                            {% endif %}
+                        </div>
+                    </div>
+                    <div class="ss-f-first-div">
+                        <div class="club-logo">
+                            <!-- for the presentation of the site -->
+                            {% if club.pk == 1 %}
+                            <img src="{% static "images/basic_pictures/club_eclipse.png" %}" alt="Club Image">
+                            {% else %}
+                            <img src="{% static "images/basic_pictures/moon_legacy.png" %}" alt="Club Image">
+                            {% endif %}
+{#                            <!-- the true order <img src="{{ club.club_logo.url }}" alt="Club Image"> -->#}
+                        </div>
+                        <div class="club-awards">
+                            <p class="club-awards-p">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#ffd700" class="bi bi-award-fill" viewBox="0 0 16 16">
+                                        <path d="m8 0 1.669.864 1.858.282.842 1.68 1.337 1.32L13.4 6l.306 1.854-1.337 1.32-.842 1.68-1.858.282L8 12l-1.669-.864-1.858-.282-.842-1.68-1.337-1.32L2.6 6l-.306-1.854 1.337-1.32.842-1.68L6.331.864 8 0z"/>
+                                        <path d="M4 11.794V16l4-1 4 1v-4.206l-2.018.306L8 13.126 6.018 12.1 4 11.794z"/>
+                                    </svg>
+                                    <i>{{ club.award_gold }}</i>
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#bfc1c2" class="bi bi-award-fill" viewBox="0 0 16 16">
+                                        <path d="m8 0 1.669.864 1.858.282.842 1.68 1.337 1.32L13.4 6l.306 1.854-1.337 1.32-.842 1.68-1.858.282L8 12l-1.669-.864-1.858-.282-.842-1.68-1.337-1.32L2.6 6l-.306-1.854 1.337-1.32.842-1.68L6.331.864 8 0z"/>
+                                        <path d="M4 11.794V16l4-1 4 1v-4.206l-2.018.306L8 13.126 6.018 12.1 4 11.794z"/>
+                                    </svg>
+                                    <i>{{ club.award_silver }}</i>
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#cdab7e" class="bi bi-award-fill" viewBox="0 0 16 16">
+                                        <path d="m8 0 1.669.864 1.858.282.842 1.68 1.337 1.32L13.4 6l.306 1.854-1.337 1.32-.842 1.68-1.858.282L8 12l-1.669-.864-1.858-.282-.842-1.68-1.337-1.32L2.6 6l-.306-1.854 1.337-1.32.842-1.68L6.331.864 8 0z"/>
+                                        <path d="M4 11.794V16l4-1 4 1v-4.206l-2.018.306L8 13.126 6.018 12.1 4 11.794z"/>
+                                    </svg>
+                                    <i>{{ club.award_bronze }}</i>
+                                </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="s-first-div">
+                    <div class="ff-s-first-div">
+                        <div class="club-phone">
+                            <div><i class="fa fa-mobile-alt" style="font-size: 22px; color: #486F38;"></i></div>
+                            <p>{{ club.club_phone_number }}</p>
+                        </div>
+                        <div class="club-address">
+                            <div><i class="fa fa-house-user" style="font-size: 22px; color: #486F38"></i></div>
+                            <p>{{ club.address }}</p>
+                        </div>
+                        <div class="club-email">
+                            <div><i class="fa fa-envelope" style="font-size: 22px; color: #486F38"></i></div>
+                            <p>{{ club.email_club }}</p>
+                        </div>
+                    </div>
+                    <div class="ss-s-first-div">
+                        {% if request.user.is_staff %}
+                        <div class="club-edit">
+                            <a href="{% url 'edit club' club.pk %}" >Edit Club</a>
+                        </div>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+            <div class="second-div">
+                <div class="f-second-div">
+                    {% if club.pk == 1 %}
+                    <img src="{% static "images/clubs_ema_pic/eclipse-team.jpg" %}" alt="Pic">
+                    {% else %}
+                    <img src="{% static "images/clubs_ema_pic/moonlight-pic.jpg" %}" alt="Pic">
+                    {% endif %}
+                    <p>{{ club.description }}</p>
+                </div>
+            </div>
+            <div class="third-div">
+                <div class="f-third-div">
+                    {% if club.pk == 1 %}
+                    <img src="{% static "images/clubs_ema_pic/eclipse-medals.jpg" %}" alt="Pic">
+                    {% else %}
+                    <img src="{% static "images/clubs_ema_pic/ema_shoki.jpg" %}" alt="Pic">
+                    {% endif %}
+                    <p>Lorem ipsum dolor sit amet consectetur adipiscing elit,
+                        urna consequat felis vehicula class ultricies mollis
+                        dictumst, aenean non a in donec nulla. Phasellus ante
+                        pellentesque erat cum risus consequat imperdiet aliquam,
+                        integer placerat et turpis mi eros nec lobortis taciti,
+                        vehicula nisl litora tellus ligula porttitor metus.
+                    </p>
+                </div>
+            </div>
+            <h4>Trainer</h4>
+            <div class="club-trainer">
+                {% for trainer in club.trainer_set.all %}
+                <div>
+                    <a href="#">{{ trainer }}</a>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+     </div>
+    <script>
+        document.querySelector('section').classList.add('info-section')
+        document.querySelectorAll('.drop-enter a').forEach(a => a.style.color = '#486F38');
+    </script>
+{% endblock %}
+
+
+
