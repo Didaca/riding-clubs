@@ -1,0 +1,135 @@
+.club-reg {
+    position: absolute;
+    top: 200px;
+    left: 195px;
+    width: 760px;
+    height: 680px;
+    background: var(--form-backrgb);
+    border-radius: 8px;
+    z-index: 1;
+}
+
+.fa-solid.fa-xmark.fa-club {
+    position: absolute;
+    color: var(--user-backrgb);
+    top: 12px;
+    right: 16px;
+    z-index: 12;
+    cursor: pointer;
+}
+
+.club-reg-form {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 30px;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: var(--whitesmoke);
+    border-radius: 8px;
+    z-index: 10;
+    padding: 40px 50px;
+}
+
+.club-form-heading {
+    text-align: center;
+    text-transform: uppercase;
+    color: var(--breed-letters);
+    font-weight: 400;
+    letter-spacing: 1px;
+}
+
+.input-club {
+    position: relative;
+    width: 100%;
+    height: 45px;
+    box-shadow: 0 0 2px var(--form-backrgb);
+    border-radius: 8px;
+}
+
+.input-club span {
+    position: absolute;
+    left: 0;
+    top: 55px;
+}
+
+.input-club:nth-child(8) > span:nth-child(2) {
+    top: 165px;
+}
+
+.club_name,
+.owner_name,
+.club_email,
+.club_address,
+.club_phone,
+.club_desc,
+.club_logo,
+.empty-logo {
+    position: relative;
+    width: 100%;
+    height: 45px;
+    padding: 12px;
+    background: transparent;
+    border: none;
+    outline: none;
+    font-size: 20px;
+    letter-spacing: 1px;
+    z-index: 10;
+}
+
+
+.input-club:nth-child(8),
+.club_desc {
+    height: 160px;
+    resize: inherit;
+}
+
+.club_logo {
+    width: 40px;
+    left: 268px;
+    cursor: pointer;
+}
+
+.fa-image {
+    position: absolute;
+    font-size: 30px;
+    color: var(--form-backrgb);
+    top: 8px;
+    right: 10px;
+}
+
+.fa-cover {
+    cursor: pointer;
+}
+
+.show-logo {
+    width: 100%;
+    height: 36px;
+    background-color: transparent;
+    position: absolute;
+    top: 4px;
+    left: 0;
+    padding: 2px 0 0 6px;
+}
+
+.club-reg-btn {
+    position: absolute;
+    bottom: 70px;
+    right: 50px;
+    width: 320px;
+    height: 60px;
+    font-size: 20px;
+    letter-spacing: 1px;
+    padding: 4px 12px;
+    border: 2px solid var(--breed-letters);
+    border-radius: 8px;
+    color: var(--breed-letters);
+    background: none;
+    text-transform: uppercase;
+    margin-top: 24px;
+    cursor: pointer;
+}
+
+.club-reg-btn:hover {
+    box-shadow: 0 0 4px var(--breed-letters);
+}

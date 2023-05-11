@@ -1,0 +1,188 @@
+.club-edit-content,
+.pf-edit-content,
+.pass-edit-content {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 60px 0;
+}
+
+fieldset {
+    position: relative;
+    width: 800px;
+    border: none;
+    background: var(--whitesmoke);
+    border-radius: 8px;
+    box-shadow: 0 0 18px var(--form-backrgb);
+    padding: 40px 50px;
+    z-index: 1;
+}
+
+.pass-fieldset {
+    width: 500px;
+}
+
+.cl-ed,
+.pf-ed,
+.pass-ed {
+    font-size: 24px;
+    letter-spacing: 1px;
+    color: var(--edit);
+    font-weight: 600;
+}
+
+.fa-solid.fa-xmark.fa-club {
+    position: absolute;
+    color: var(--user-backrgb);
+    top: 12px;
+    right: 16px;
+    z-index: 12;
+    cursor: pointer;
+}
+
+.cl-ed-form,
+.pf-ed-form,
+.pass-ed-form {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    width: 100%;
+    height: 100%;
+    gap: 35px;
+}
+
+.pass-ed-form {
+    align-items: stretch;
+    color: var(--form-backrgb);
+}
+
+.cl-ed-form p,
+.pf-ed-form p {
+    position: relative;
+    width: 70%;
+    height: 45px;
+    box-shadow: 0 0 2px var(--form-backrgb);
+    border-radius: 8px;
+}
+
+.cl-ed-form label,
+.pf-ed-form label {
+    position: absolute;
+    width: 160px;
+    top: 8px;
+    right: 520px;
+}
+
+.cl-ed-form p input,
+.pf-ed-form p input {
+    width: 100%;
+    height: 100%;
+    padding: 12px;
+    border: none;
+    background: transparent;
+}
+
+.pass-ed-form input[type=password] {
+    border-radius: 8px;
+    border: 1px solid;
+}
+
+
+.cl-ed-form p input:active,
+.cl-ed-form p input:focus,
+.pf-ed-form p input:active,
+.pf-ed-form p input:focus {
+    border-radius: 8px;
+}
+
+.cl-ed-form p textarea {
+    width: 100%;
+    height: 100%;
+    padding: 8px 0 0 12px;
+    border: none;
+    background: transparent;
+    resize: none;
+}
+
+.cl-ed-form p textarea:active,
+.cl-ed-form p textarea:focus {
+    border-radius: 8px;
+}
+
+.cl-ed-form > p:nth-child(7) {
+    height: 120px;
+    resize: inherit;
+}
+
+.cl-ed-form > p:nth-child(8),
+.pf-ed-form > p:nth-child(4) {
+    display: flex;
+    flex-direction: column;
+    padding: 8px 0 0 12px;
+    height: 130px;
+}
+
+.cl-ed-form > p:nth-child(8) > label:nth-child(4),
+.pf-ed-form > p:nth-child(4) > label:nth-child(4) {
+    position: unset;
+}
+
+.cl-ed-form > p:nth-child(8) a,
+.pf-ed-form > p:nth-child(4) a {
+    margin-left: 10px;
+    color: var(--edit);
+}
+
+.cl-ed-form > p > input[type=checkbox],
+.pf-ed-form > p > input[type=checkbox] {
+    position: absolute;
+    top: 63px;
+    left: 60px;
+    width: 16px;
+    height: 16px;
+}
+
+.cl-ed-form > p > input[type=file],
+.pf-ed-form > p > input[type=file] {
+    position: absolute;
+    width: 240px;
+    height: 52px;
+    top: 75px;
+    left: 75px;
+    cursor: pointer;
+    color: var(--access-tags);
+}
+
+.cl-ed-option,
+.pf-ed-option,
+.pass-ed-option {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.edit-btn,
+.edit-a {
+    font-size: 22px;
+    letter-spacing: 1px;
+    padding: 4px 12px;
+    border: 2px solid var(--edit);
+    border-radius: 8px;
+    color: var(--edit);
+    background: none;
+    text-transform: uppercase;
+    cursor: pointer;
+}
+
+.pass-btn {
+    width: 100%;
+    margin-top: 30px;
+}
+
+.edit-btn:hover,
+.edit-a:hover {
+    box-shadow: 0 0 4px var(--edit);
+}

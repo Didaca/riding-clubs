@@ -1,0 +1,39 @@
+.access,
+.page-construction {
+    display: inline-block;
+    width: 600px;
+    letter-spacing: 1px;
+    position: relative;
+    left: 190px;
+    top: 60px;
+}
+
+.page-construction p {
+    color: var(--edit);
+}
+
+.del-profile {
+    display: inline-block;
+    width: 600px;
+    font-size: 40px;
+    letter-spacing: 1px;
+    position: relative;
+    left: 190px;
+    top: 60px;
+    padding: 12px 36px;
+    border-radius: 8px;
+    box-shadow: 0 0 16px var(--letters);
+    color: var(--access-tags);
+}
+
+.access-paragraph,
+.page-construction-paragraph {
+    font-size: 42px;
+    letter-spacing: 1px;
+    text-transform: capitalize;
+    color: var(--form-backrgb);
+}
+
+.access-paragraph span {
+    color: var(--access-tags);
+}

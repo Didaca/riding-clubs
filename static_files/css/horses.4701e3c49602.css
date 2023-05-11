@@ -1,0 +1,66 @@
+.horse-breeds {
+    position: relative;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 120px 0;
+    background-color: var(--h-p-tags);
+}
+
+.horse-heading {
+    position: absolute;
+    top: -3%;
+    left: auto;
+    width: 1140px;
+    background: rgb(185,120,51);
+    background: linear-gradient(45deg, rgba(185,120,51,1) 0%, rgba(212,176,139,1) 70%);
+    border: none;
+    border-radius: 8px;
+    color: var(--letters);
+    text-align: center;
+}
+
+.breed-heading {
+    font-size: 60px;
+    font-weight: 400;
+    letter-spacing: 1px;
+}
+
+.breeds-wrapper {
+    width: 1140px;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    align-items: center;
+    gap: 120px;
+}
+
+.breed-pic {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    gap: 12px;
+    height: 100%;
+    align-items: center;
+    background-color: transparent;
+    border-radius: 8px;
+    padding-bottom: 12px;
+    box-shadow: 0 8px 16px 8px var(--form-backrgb);
+    transition: all 0.3s;
+}
+
+.breed-pic:hover {
+    transform: scale(1.1);
+}
+
+.breed-pic img {
+    width: 300px;
+    height: 200px;
+    border-radius: 8px;
+}
+
+.disc-pic {
+    font-size: 24px;
+    letter-spacing: 1px;
+    color: var(--bronze);
+}
