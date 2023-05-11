@@ -1,60 +1,79 @@
 .body-payment {
-    width: 600px;
-    height: 850px;
+    position: absolute;
+    top: 230px;
+    left: 300px;
+    width: 400px;
     text-align: center;
-    margin: 2rem auto;
-    box-sizing: border-box;
+    padding: 24px 50px;
+    border-radius: 8px;
+    background-color: var(--letters);
+}
+
+.pay-heading {
+    color: var(--form-backrgb);
 }
 
 .div-form-pay {
-    width: 50%;
-    margin: auto;
-    border: 1px solid #5e503f;
-    border-radius: 6px;
+    width: 100%;
+    height: 100%;
+}
+
+.pay-form {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+    color: var(--breed-letters);
+}
+
+.pay-form input[type=text] {
+    width: 100%;
+    border-radius: 8px;
+    border: 1px solid;
+    outline: none;
+}
+
+.pay-form input[type=text]:active,
+.pay-form input[type=text]:focus {
+    outline: 1px solid var(--breed-letters);
+}
+
+#ex-date-i,
+#cvv-i {
+    width: 40%;
+}
+
+#ex-date-i {
     text-align: center;
 }
 
-.div-form-pay:hover {
-    border: 3px solid #5e503f;
-    box-shadow: 2px 2px;
+.cards-options .fa-brands {
+    font-size: 28px;
 }
 
-form.pay-form {
-    width: 80%;
-    padding: 2rem 0;
-    margin: auto;
-    text-align: left;
-    color: #61754B;
+.fa-cc-mastercard {
+    color: var(--mastercard-back);
 }
 
-input#cvv-i {
-    width: 40px;
+.fa-cc-visa {
+    color: var(--visa-back);
 }
 
-input#ex-date-i {
-    width: 80px;
-}
-
-.cards-options {
-    display: block;
-    float: right;
-    color: #61754B;
-}
-
-form.pay-form input[type=submit] {
+.pay-form input[type=submit] {
+    width: 100%;
+    font-size: 18px;
+    letter-spacing: 1px;
+    padding: 4px 12px;
+    border: 2px solid var(--breed-letters);
+    border-radius: 8px;
+    color: var(--breed-letters);
+    background: none;
     text-transform: uppercase;
-    width: 250px;
-    margin-top: 3rem;
-    border-radius: 4px;
-    padding: 6px;
-    background-color: #61754B;
-    color: white;
+    margin-top: 24px;
+    cursor: pointer;
 }
 
-form.pay-form input[type=submit]:hover {
-    cursor: pointer;
-    border: 2px solid darkgoldenrod;
-    border-radius: 4px;
-    background-color: white;
-    color: #61754B;
+.pay-form input[type=submit]:hover {
+    box-shadow: 0 0 8px var(--breed-letters);
 }

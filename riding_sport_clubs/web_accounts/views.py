@@ -8,7 +8,7 @@ from django.contrib.auth.views import LoginView, LogoutView, PasswordChangeView
 from django.urls import reverse_lazy, reverse
 from django.contrib.auth import login, authenticate
 
-from riding_sport_clubs.web_accounts.forms import UserRegistrationForm
+from riding_sport_clubs.web_accounts.forms import UserRegistrationForm, UserLoginForm
 from riding_sport_clubs.web_accounts.models import SiteUser
 
 
@@ -23,6 +23,11 @@ class UserRegistrationView(CreateView):
             return self.success_url
         return super().get_success_url()
 
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['form'] = UserRegistrationForm()
+        return context
+
     def form_valid(self, form):
         form.save()
         new_user = authenticate(username=self.request.POST['username'],
@@ -33,16 +38,16 @@ class UserRegistrationView(CreateView):
 
 class UserLoginView(LoginView):
     template_name = 'account/login.html'
-    success_url = reverse_lazy('list clubs')
+    next_page = 'list clubs'
 
-    def get_success_url(self):
-        if self.success_url:
-            return self.success_url
-        return super().get_success_url()
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['form'] = UserLoginForm()
+        return context
 
 
 class UserLogoutView(LogoutView):
-    next_page = reverse_lazy('home page')
+    next_page = 'home page'
 
 
 class ChangeUserPasswordView(PasswordChangeView):
@@ -62,7 +67,8 @@ class ProfileDetailsView(DetailView):
 
 class ProfileEditView(UpdateView):
     model = SiteUser
-    fields = ('email', 'phone_number', 'picture',)
+    fields = ['email', 'phone_number', 'picture']
+    template_name_suffix = '_update_form'
     template_name = 'account/edit_profile.html'
 
     def get_success_url(self):

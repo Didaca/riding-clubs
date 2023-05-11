@@ -1,8 +1,8 @@
 {% extends 'bases/base.html' %}
 
-{% block co_base %}
+{% block co_payment %}
     <div class="body-payment">
-        <h1 class="pay-section">Payment</h1>
+        <h1 class="pay-heading">Payment</h1>
         <div class="div-form-pay">
             <form class="pay-form" method="get" action="{% url 'create club' %}" enctype="multipart/form-data">
                 {% csrf_token %}
@@ -11,18 +11,15 @@
                 <label for="o-name" id="o-name-l">name on card</label>
                 <input id="o-name-i" type="text" name="text-name">
                 <label for="ex-date" id="ex-date-l">expiry date</label>
-                <input id="ex-date-i" type="text" name="text-date" disabled placeholder="&nbsp;&nbsp;&nbsp;mm&nbsp;/&nbsp;yy"><br><br>
+                <input id="ex-date-i" type="text" name="text-date" disabled placeholder="mm&nbsp;&nbsp;/&nbsp;&nbsp;yy">
                 <label for="cvv-card" id="cvv-l">cvv/cvc2</label>
                 <input id="cvv-i" type="text" name="cvv-card" disabled>
                 <div class="cards-options">
-                    <i class='fab fa-cc-mastercard' style="font-size: 30px"></i>
-                    <i class="fab fa-cc-visa" style="font-size: 30px"></i>
+                    <i class="fa-brands fa-cc-mastercard"></i>
+                    <i class="fa-brands fa-cc-visa"></i>
                 </div>
-                <input type="submit" value="Go To Registration Club" />
+                <input type="submit" value="Go To Club Registration" />
             </form>
         </div>
     </div>
-    <script>
-    document.querySelectorAll('.drop-enter a').forEach(a => a.style.color = '#486F38');
-    </script>
 {% endblock %}

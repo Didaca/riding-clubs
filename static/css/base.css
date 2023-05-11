@@ -1,10 +1,11 @@
 @import url("entry_page.css");
 @import url("forms.css");
+@import url("create_club.css");
 @import url("clubs_list.css");
 @import url("details_profile.css");
-@import url("custom_error_pages.css");
+@import url("404.css");
 @import url("access.css");
 @import url("club_info.css");
-@import url("edit_profile.css");
+@import url("edits.css");
 @import url("horses.css");
 @import url("payment_form.css");

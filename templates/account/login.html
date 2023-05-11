@@ -1,22 +1,27 @@
 {% extends 'bases/base.html' %}
 {% load static %}
 
-{% block co_base %}
-    <div class="body-f">
-        <h1 class="login-section">Login Portal</h1>
-        <div class="login">
-            <form class="login-form" method="post" action="{% url 'login' %}">
+{% block co_login %}
+    <div class="box">
+        <a href="/" ><i class="fa-solid fa-xmark"></i></a>
+            <form class="form" method="post" action="{% url 'login' %}" enctype="multipart/form-data">
                 {% csrf_token %}
-                {{ form }}
-                <input type="submit" value="Log In" />
+                <h2 class="form-heading">Sign In</h2>
+                <div class="input-box">
+                    {{ form.username }}
+                    <span>Username</span>
+                    <i></i>
+                </div>
+                <div class="input-box">
+                    {{ form.password }}
+                    <span>Password</span>
+                    <i></i>
+                </div>
+                <div class="links">
+                    <a href="#">Forgot Password</a>
+                    <a href="{% url 'registration' %}">Sign up</a>
+                </div>
+                <button class="login-box-btn">Log in</button>
             </form>
-            <div>
-                <p>or</p>
-                <a id="go-to-register" href="{% url 'registration' %}">Go to Registration</a>
-            </div>
         </div>
-    </div>
-    <script>
-        document.querySelectorAll('.drop-enter a').forEach(a => a.style.color = '#486F38');
-    </script>
 {% endblock %}

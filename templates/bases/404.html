@@ -11,15 +11,21 @@
     <link rel="icon" type="image/png" sizes="32x32" href="{% static "images/basic_pictures/favicon-32x32.png" %}">
     <title>ERROR 404</title>
 </head>
-<body class="error-4body">
-    <div class="page-error-404">
-        <div class="error-404">
-            <img src="{% static "images/basic_pictures/404-3.png" %}" alt="404">
+<body class="body">
+    <section class="page-error-404">
+        <div class="cube">
+            <div class="up"></div>
             <div>
-                <p>We`ve looked practically everywhere. Double-check the URL, go back, or go to the
-                    <a class="er-404" href="{% url "home page" %}">home</a> page.</p>
+                <span style="--i:0">error 404</span>
+                <span style="--i:1">error 404</span>
+                <span style="--i:2">error 404</span>
+                <span style="--i:3">error 404</span>
             </div>
         </div>
-    </div>
+        <div class="message">
+            <p><span>Sorry</span>, page not found!</p>
+            <p>We`ve looked practically everywhere.<br>Double-check the URL, go back, or go to the <a href="{% url 'home page' %}">Home</a> page.</p>
+        </div>
+    </section>
 </body>
 </html>

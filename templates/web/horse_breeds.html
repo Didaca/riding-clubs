@@ -2,31 +2,32 @@
 {% load static %}
 
 {% block co_base %}
-    <div class="horse-breeds">
-    {% for breed in object_list %}
-        <div class="breed-pic">
-            <a href="{% url 'breed info' breed.pk %}">
-                {% if breed.breed_photo %}
-                <img src="{{ breed.breed_photo.url }}" alt="East Bulgarian Horse">
-                {% else %}
-                    <!-- for demo site -->
-                    {% if breed.breed == 'East Bulgarian' %}
-                    <img src="{% static "images/site-static-breeds-pic/East-Bulgarian-Horse.jpg" %}" alt="East Bulgarian Horse">
-                    {% elif breed.breed == 'Friesian' %}
-                    <img src="{% static "images/site-static-breeds-pic/friesian 2.jpg" %}" alt="Friesian Horse">
-                    {% elif breed.breed == 'Thoroughbred' %}
-                    <img src="{% static "images/site-static-breeds-pic/Thoroughbred-light.jpg" %}" alt="Thoroughbred Horse">
-                    {% elif breed.breed == 'Arab' %}
-                    <img src="{% static "images/site-static-breeds-pic/Black-Arabian-Stallion-horse-breed.jpg" %}" alt="Arab Horse">
-                    {% endif %}
-                {% endif %}
-            </a>
-            <div class="disc-pic" >{{ breed.breed }} Horse</div>
+    <section id="horse-breeds" class="horse-breeds">
+        <div class="horse-heading">
+            <h1 class="breed-heading">Discover your horse breed</h1>
         </div>
-    {% endfor %}
-    </div>
-    <script>
-    document.querySelector('section').classList.add('horse-section')
-    document.querySelectorAll('.drop-enter a').forEach(a => a.style.color = '#486F38');
-    </script>
+        <div class="breeds-wrapper">
+        {% for breed in object_list %}
+            <div class="breed-pic">
+                <a href="{% url 'breed info' breed.pk %}#breed-info">
+                    {% if breed.breed_photo %}
+                    <img src="{{ breed.breed_photo.url }}" alt="East Bulgarian Horse">
+                    {% else %}
+                        <!-- for demo site -->
+                        {% if breed.breed == 'East Bulgarian' %}
+                        <img src="{% static "images/site-static-breeds-pic/East-Bulgarian-Horse.jpg" %}" alt="East Bulgarian Horse">
+                        {% elif breed.breed == 'Friesian' %}
+                        <img src="{% static "images/site-static-breeds-pic/friesian 2.jpg" %}" alt="Friesian Horse">
+                        {% elif breed.breed == 'Thoroughbred' %}
+                        <img src="{% static "images/site-static-breeds-pic/Thoroughbred-light.jpg" %}" alt="Thoroughbred Horse">
+                        {% elif breed.breed == 'Arab' %}
+                        <img src="{% static "images/site-static-breeds-pic/Black-Arabian-Stallion-horse-breed.jpg" %}" alt="Arab Horse">
+                        {% endif %}
+                    {% endif %}
+                </a>
+                <div class="disc-pic" >{{ breed.breed }} Horse</div>
+            </div>
+        {% endfor %}
+        </div>
+    </section>
 {% endblock %}

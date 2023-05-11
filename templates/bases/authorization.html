@@ -1,9 +1,8 @@
 {% extends 'bases/base.html' %}
 {% load static %}
 
-{% block co_base %}
+{% block co_access %}
     <div class="access">
-        <h1 id="access">Access denied!<br>Contact us.</h1>
-        <img src="{% static "images/basic_pictures/eclipse-access.jpg" %}" >
+        <p class="access-paragraph"><span>to</span> register your club you must have permission<span>!</span></p>
     </div>
 {% endblock %}

@@ -1,47 +1,39 @@
-div.access {
-    width: 100%;
-    height: 100vh;
+.access,
+.page-construction {
+    display: inline-block;
+    width: 600px;
+    letter-spacing: 1px;
+    position: relative;
+    left: 190px;
+    top: 60px;
 }
 
-div.access>img {
-    position: absolute;
-    z-index: -1;
-    width: 100%;
-    height: 101vh;
-    top: 75px;
-    opacity: 0.7;
+.page-construction p {
+    color: var(--edit);
 }
 
-h1#access {
-    position: absolute;
-    width: 400px;
-    top: 10rem;
-    right: 12rem;
-    font-size: 70px;
-    color: orangered;
-    text-align: center;
+.del-profile {
+    display: inline-block;
+    width: 600px;
+    font-size: 40px;
+    letter-spacing: 1px;
+    position: relative;
+    left: 190px;
+    top: 60px;
+    padding: 12px 36px;
+    border-radius: 8px;
+    box-shadow: 0 0 16px var(--letters);
+    color: var(--access-tags);
 }
 
-.error-4body {
-    display: flex;
-    box-sizing: border-box;
-    text-align: center;
-    margin: 2rem;
-}
-
-.page-error-404 {
-    width: 100%;
-    min-height: 90vh;
-    border: 2px solid #486F38;
-    border-radius: 10px;
-}
-
-.error-404 p {
-    color: #B8A062;
+.access-paragraph,
+.page-construction-paragraph {
+    font-size: 42px;
+    letter-spacing: 1px;
     text-transform: capitalize;
+    color: var(--form-backrgb);
 }
 
-a.er-404 {
-    text-decoration: none;
-    color: #486F38;
+.access-paragraph span {
+    color: var(--access-tags);
 }

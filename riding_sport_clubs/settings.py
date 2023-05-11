@@ -25,7 +25,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = os.getenv('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = os.getenv('DEBUG', 'False')
+DEBUG = os.getenv('DEBUG', False)
 
 ALLOWED_HOSTS = [
     'localhost',
@@ -87,11 +87,11 @@ if DATAB == 'Development':
     DATABASES = {
         'default': {
             'ENGINE': 'django.db.backends.postgresql',
-            'NAME': os.getenv('DB_DEV_NAME'),
-            'USER': os.getenv('DB_DEV_USER'),
-            'PASSWORD': os.getenv('DB_DEV_PASS'),
-            'HOST': os.getenv('DB_DEV_HOST'),
-            'PORT': os.getenv('DB_DEV_PORT'),
+            'NAME': os.getenv('DB_DEV_NAME', 'db_dev_name'),
+            'USER': os.getenv('DB_DEV_USER', 'db_dev_user'),
+            'PASSWORD': os.getenv('DB_DEV_PASS', 'db_dev_pass'),
+            'HOST': os.getenv('DB_DEV_HOST', 'localhost'),
+            'PORT': os.getenv('DB_DEV_PORT', '5432'),
         }
     }
 else:

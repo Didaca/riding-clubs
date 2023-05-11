@@ -2,38 +2,27 @@
 {% load static %}
 
 {% block co_base %}
-    <div class="cl-pic">
-        <img src="{% static "images/basic_pictures/club-searching.jpg" %}" alt="Horse Riding">
-        <div class="cl-text">
-            <h1 class="disc-clubs" >Discover your club</h1>
-            <div class="search-club" style="opacity: 1"><i class="gg-search"></i></div>
-            <div class="close-search-club" style="opacity: 0"><i class='fas fa-window-close'></i></div>
-            <div class="form-content" style="display:none">
+    <section id="clubs-section" class="clubs-section">
+        <div class="clubs-section-head">
+            <div class="search">
                 <form class="search-form" method="get" action="{% url "search club" %}">
                     {% csrf_token %}
-                    <input type="text" name="search" placeholder="Write the name of the club">
-                    <input type="submit" value="Search...">
+                    <input type="search" class="search-input" name="search" placeholder="Club name...">
+                    <button class="btn_search" ><i class="fa-solid fa-magnifying-glass"></i></button>
                 </form>
             </div>
+            <h2 class="clubs-section-h2">Find club</h2>
         </div>
-    </div>
-    <div id="clubs-center">
-        <div class="list">
-        {% if object_list %}
+        <div class="swiper mySwiper clubs-container">
+            <div class="swiper-wrapper">
+            {% if object_list %}
             {% for club in object_list %}
-                <article id="catalogPage">
+                <article id="catalogPage" class="swiper-slide club-article">
                     <div class="card-box">
-                        <!-- for the presentation of the site -->
-                        {% if club.pk == 1 %}
-                        <img src="{% static "images/basic_pictures/club_eclipse.png" %}" alt="Club Image">
-                        {% else %}
-                        <img src="{% static "images/basic_pictures/moon_legacy.png" %}" alt="Club Image">
-                        {% endif %}
-{#                        <!-- the true order <img src="{{ club.club_logo.url }}" alt="Club Image"> -->#}
                         <div class="text-center">
-                            <p class="name" ><strong>{{ club.club_name }}</strong></p>
+                            <span class="name" ><strong>{{ club.club_name }}</strong></span>
                             <p class="description">{{ club.description }}</p>
-                            <p class="awards">
+                            <div class="awards">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#ffd700" class="bi bi-award-fill" viewBox="0 0 16 16">
                                     <path d="m8 0 1.669.864 1.858.282.842 1.68 1.337 1.32L13.4 6l.306 1.854-1.337 1.32-.842 1.68-1.858.282L8 12l-1.669-.864-1.858-.282-.842-1.68-1.337-1.32L2.6 6l-.306-1.854 1.337-1.32.842-1.68L6.331.864 8 0z"/>
                                     <path d="M4 11.794V16l4-1 4 1v-4.206l-2.018.306L8 13.126 6.018 12.1 4 11.794z"/>
@@ -49,7 +38,7 @@
                                     <path d="M4 11.794V16l4-1 4 1v-4.206l-2.018.306L8 13.126 6.018 12.1 4 11.794z"/>
                                 </svg>
                                 <i>{{ club.award_bronze }}</i>
-                            </p>
+                            </div>
                         </div>
                         <div class="btn-group">
                             <p class="rating" >Rating: {{ club.rating }}
@@ -62,18 +51,20 @@
                                 {% endif %}
                             </p>
                             <div class="alert-rate" style="display: none">
-                            <p>You can rate only once</p>
-                        </div>
-                            <a href="{% url 'club info' club.pk %}"><strong>More Info</strong></a>
+                                <p>You can rate only once</p>
+                            </div>
+                            <a href="{% url 'club info' club.pk %}#club-info"><strong>More Info</strong></a>
                         </div>
                     </div>
                 </article>
                 {% endfor %}
-        {% else %}
-            <h2>No results found!</h2>
-        {% endif %}
+            {% else %}
+                <h2>No results found!</h2>
+            {% endif %}
+            </div>
+        <div class="swiper-pagination"></div>
         </div>
-    </div>
+    </section>
     <script>
         document.querySelectorAll('.likes').forEach(e => e.addEventListener('mouseover', (ev) => {
             ev.currentTarget.parentNode.parentNode.querySelector('.alert-rate').style.display = 'block';
@@ -81,33 +72,24 @@
         document.querySelectorAll('.likes').forEach(e => e.addEventListener('mouseout', (ev) => {
             ev.currentTarget.parentNode.parentNode.querySelector('.alert-rate').style.display = 'none';
         }))
-
-        document.querySelector('.search-club').addEventListener('click', loadSearch);
-        document.querySelector('.close-search-club').addEventListener('click', loadSearch);
-        document.querySelector('.search-club').addEventListener('mouseover', (e) => {
-            e.currentTarget.style.background = 'transparent';
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>
+    <script>
+        const swiper = new Swiper(".mySwiper", {
+            effect: "coverflow",
+            grabCursor: true,
+            centeredSlides: true,
+            slidesPerView: "auto",
+            coverflowEffect: {
+                rotate: 50,
+                stretch: 0,
+                depth: 100,
+                modifier: 1,
+                slideShadows: true,
+            },
+            pagination: {
+                el: ".swiper-pagination",
+            },
         });
-        document.querySelector('.search-club').addEventListener('mouseout', (e) => {
-            e.currentTarget.style.background = 'white';
-        });
-
-        function loadSearch() {
-            let open_search = document.querySelector('.search-club');
-            let close_search = document.querySelector('.close-search-club');
-            let text_h1 = document.querySelector('.disc-clubs');
-            let div_form = document.querySelector('.form-content');
-
-            if(div_form.style.display === 'none') {
-                text_h1.style.opacity = '0';
-                open_search.style.opacity = '0';
-                close_search.style.opacity = '1';
-                div_form.style.display = 'block';
-            }else {
-                text_h1.style.opacity = '1';
-                open_search.style.opacity = '1';
-                close_search.style.opacity = '0';
-                div_form.style.display = 'none';
-            }
-        }
     </script>
 {% endblock %}

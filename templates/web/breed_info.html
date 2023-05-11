@@ -2,7 +2,7 @@
 {% load static %}
 
 {% block co_base %}
-    <div class="back-ground-club-info">
+    <div id="breed-info" class="back-ground-club-info">
         <div class="main-div-breed">
         <!-- only for demo -->
             {% if object.breed == 'East Bulgarian' %}
@@ -22,5 +22,4 @@
             <p><strong>Story:</strong>&nbsp;&nbsp;{{ object.breed_description }}</p>
         </div>
     </div>
-    <script>document.querySelectorAll('.drop-enter a').forEach(a => a.style.color = '#486F38');</script>
 {% endblock %}

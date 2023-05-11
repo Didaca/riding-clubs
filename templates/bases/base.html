@@ -7,77 +7,107 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" type="text/css" href="{% static "css/base.css" %}" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <!-- Favicon -->
     <link rel="icon" type="image/png" sizes="32x32" href="{% static "images/basic_pictures/favicon-32x32.png" %}">
-    <link rel='stylesheet' href='https://css.gg/smartphone.css'>
-    <link rel='stylesheet' href='https://css.gg/keyhole.css'>
-    <link rel='stylesheet' href='https://css.gg/mail.css'>
-    <link rel='stylesheet' href='https://css.gg/smartphone-shake.css'>
-    <link rel='stylesheet' href='https://css.gg/search.css'>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Goudy+Bookletter+1911&display=swap" rel="stylesheet">
+    <!-- Font Awesome -->
     <script src="https://kit.fontawesome.com/5cc1ff78db.js" crossorigin="anonymous"></script>
+    <!-- Custom Styling -->
+    <link rel="stylesheet" type="text/css" href="{% static "css/reset_css.css" %}" />
+    <link rel="stylesheet" type="text/css" href="{% static "css/base.css" %}" />
+
+     <!-- Link Swiper's CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css" />
+
     <title>Riding Clubs</title>
+
 </head>
 
 <body>
-    <header>
-        <img src="{% static "images/basic_pictures/horse&girl.png" %}" alt="Base image" />
-        <nav>
-            <ul class="left">
-                <li><a class="select-page" href="{% url 'home page' %}">Home</a></li>
-                {% if request.user.is_staff %}
-                    <li><a class="select-page" href="{% url 'pay page' %}">Horse Club Registration</a></li>
-                {% else %}
-                    <li><a class="select-page" href="{% url 'authorization' %}">Horse Club Registration</a></li>
-                {% endif %}
-                <li><a class="select-page" href="{% url 'list clubs' %}">Clubs</a></li>
-                <li><a class="select-page" href="{% url 'breeds page' %}">Horse Breeds</a></li>
-                <li><a class="select-page" href="{% url 'racing info' %}">Racing</a></li>
-            </ul>
-            <div class="drop-enter">
-                <img src="{% static "images/basic_pictures/base_image_profile.png" %}" alt="Empty image" width="30" height="30" />
+    <header class="header">
+        <div class="header-head">
+            <div class="left-head">
+                <div class="logo">
+                    <a href="/">
+                         <img class="logo-img" src="{% static "images/basic_pictures/horse&girl.png" %}" alt="Logo">
+                    </a>
+                </div>
+                <nav class="navigation">
+                    <ul role="list" class="list">
+                        <li><a class="list-a-tag select-page" href="{% url 'home page' %}">Home</a></li>
+                        <li><a class="list-a-tag select-page" href="{% url 'list clubs' %}#clubs-section">Clubs</a></li>
+                        <li><a class="list-a-tag select-page" href="{% url 'racing info' %}">Racing</a></li>
+                        <li><a class="list-a-tag select-page" href="{% url 'breeds page' %}#horse-breeds">Horse breeds</a></li>
+                        {% if request.user.is_staff %}
+                        <li><a class="list-a-tag select-page" href="{% url 'pay page' %}">Horse Club registration</a></li>
+                        {% else %}
+                        <li><a class="list-a-tag select-page" href="{% url 'authorization' %}">Horse Club registration</a></li>
+                        {% endif %}
+                    </ul>
+                </nav>
+            </div>
+            <div class="nav-user">
+                <div class="user">
+                    <i class="fa-solid fa-user"></i>
+                </div>
+            </div>
+            <div class="enter switch">
                 {% if request.user.is_authenticated %}
                 <div class="entries-in">
-                    <a href="{% url 'details profile' request.user.pk %}">Profile</a>
-                    <a href="{% url 'logout' %}">Logout</a>
+                    <a class="entries-in-profile" href="{% url 'details profile' request.user.pk %}">Profile</a>
+                    <a class="entries-in-logout" href="{% url 'logout' %}">LogOut</a>
                 </div>
                 {% else %}
                 <div class="entries-out">
-                    <a href="{% url 'login' %}">Login</a>
-                    <a href="{% url 'registration' %}">Register</a>
+                    <a class="entries-out-signin" href="{% url 'login' %}">Log In</a>
+                    <a class="entries-out-signup" href="{% url 'registration' %}">SignUp</a>
                 </div>
                 {% endif %}
             </div>
-            <script>
-                document.querySelector('.drop-enter').addEventListener('click', () => {
-                let div = document.querySelector('.drop-enter div');
-                let has_name = div.className.split(' ')[1];
-                if(has_name){
-                    div.classList.remove('switch');
-                } else {
-                    div.classList.add('switch');
-                }
-                })
-
-                document.querySelectorAll('.select-page').forEach(element => {
-                    if(element.href === window.location.href) {
-                        element.classList.add('active');
-                    }
-                })
-            </script>
-        </nav>
+        </div>
+        {% block co_header %}
+        {% endblock %}
+        {% block co_login %}
+        {% endblock %}
+        {% block co_register %}
+        {% endblock %}
+        {% block co_access %}
+        {% endblock %}
+        {% block co_under_construction %}
+        {% endblock %}
+        {% block co_profile_details %}
+        {% endblock %}
+        {% block co_payment %}
+        {% endblock %}
+        {% block co_club_registration %}
+        {% endblock %}
+        {% block co_delete_profile %}
+        {% endblock %}
     </header>
-    <main>
-        <section>
-            {% block co_base %}
-            {% endblock %}
-        </section>
+    <main class="main">
+        {% block co_base %}
+        {% endblock %}
+        {% block co_edit_club %}
+        {% endblock %}
+        {% block co_edit_profile %}
+        {% endblock %}
     </main>
-    <footer>
-        <div>
-            <p class="t-left">Copyright&nbsp;&copy;&nbsp; <a href="/">D.V.Ivanov</a></p>
-            <p class="t-right"><a href="https://github.com/Didaca"><img src="{% static "images/basic_pictures/transp-crop.png" %}"></a></p>
+    <footer class="footer">
+        <div class="media">
+            <p>Find me</p>
+            <div class="media-media">
+                <a href="https://github.com/Didaca" target="_blank"><i class="fa-brands fa-github"></i></a>
+                <a href="https://www.linkedin.com/in/deyan-ivanov-801543261/" target="_blank"><i class="fa-brands fa-linkedin"></i></a>
+            </div>
+        </div>
+        <div class="footer-text">
+            <p>Copyright&nbsp;&copy;&nbsp;<a class="my-name" href="https://dvi-resume.web.app" target="_blank">D.V.Ivanov</a></p>
         </div>
     </footer>
+     <button class="btn back-to-top" id="back"><i class="fa-solid fa-caret-up"></i></button>
+    <script src="{% static "scripts/main.js" %}"></script>
 </body>
 </html>

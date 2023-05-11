@@ -7,7 +7,8 @@ from riding_sport_clubs.web_clubs.views import HomeView, payment, ClubsListView,
 urlpatterns = (
     path('', HomeView.as_view(), name='home page'),
     path('payment/', payment, name='pay page'),
-    path('access_denied/', TemplateView.as_view(template_name='web/../../templates/bases/authorization.html'), name='authorization'),
+    path('access_denied/', TemplateView.as_view(template_name='web/../../templates/bases/authorization.html'),
+         name='authorization'),
 
     path('list_clubs/', ClubsListView.as_view(), name='list clubs'),
     path('list_clubs/search/', search_club, name='search club'),
@@ -21,4 +22,3 @@ urlpatterns = (
 
     path('racing_info/', racing_info, name='racing info'),
 )
-

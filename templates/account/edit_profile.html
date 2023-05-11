@@ -1,21 +1,18 @@
 {% extends 'bases/base.html' %}
 {% load static %}
 
-{% block co_base %}
-    <div class="pf-ed">
-        <fieldset class="profile-edit">
-            <legend>Edit Profile</legend>
-            <div class="edit-container">
-                <form class="edit-form" method="post" action="{% url 'edit profile' object.pk %}" enctype="multipart/form-data">
-                    {% csrf_token %}
-                    {{ form }}
-                    <div>
-                        <a href="{% url 'edit password' %}">Edit Password</a>
-                        <button type="submit">Edit Profile</button>
-                    </div>
-                </form>
-            </div>
+{% block co_edit_profile %}
+    <div id="edit-profile" class="pf-edit-content">
+        <fieldset>
+            <legend class="pf-ed">Edit Profile</legend>
+            <form class="pf-ed-form" method="post" action="{% url 'edit profile' object.pk %}" enctype="multipart/form-data">
+                {% csrf_token %}
+                {{ form.as_p }}
+                <div class="pf-ed-option">
+                    <a href="{% url 'edit password' %}#edit-password" class="edit-a">Edit Password</a>
+                    <button class="edit-btn">Edit Profile</button>
+                </div>
+            </form>
         </fieldset>
     </div>
-    <script>document.querySelectorAll('.drop-enter a').forEach(a => a.style.color = '#486F38');</script>
 {% endblock %}

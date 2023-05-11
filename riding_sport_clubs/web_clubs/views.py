@@ -3,7 +3,7 @@ from django.views import generic as views
 from django.shortcuts import render, redirect
 
 from riding_sport_clubs.web_accounts.models import SiteUser
-from riding_sport_clubs.web_clubs.forms import CreateClubForm
+from riding_sport_clubs.web_clubs.forms import CreateClubForm, EditClubForm
 from riding_sport_clubs.web_clubs.models import Club, HorseBreed
 
 
@@ -57,7 +57,7 @@ def payment(request):
 
 class HomeView(views.TemplateView):
     context_key = 'user'
-    conntext_value = 'No'
+    context_value = 'No'
 
     template_name = 'account/entry_page.html'
 
@@ -67,7 +67,7 @@ class HomeView(views.TemplateView):
         if self.request.user.is_authenticated:
             context[self.context_key] = self.request.user.username
         else:
-            context[self.context_key] = self.conntext_value
+            context[self.context_key] = self.context_value
 
         return context
 
@@ -103,6 +103,11 @@ class ClubCreateView(views.CreateView):
 
         return super().dispatch(request, *args, **kwargs)
 
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['form'] = CreateClubForm()
+        return context
+
 
 class ClubDetailsView(views.DetailView):
     model = Club
@@ -125,8 +130,8 @@ class ClubDetailsView(views.DetailView):
 
 class ClubEditView(views.UpdateView):
     model = Club
-    fields = ['owner', 'email_club', 'address', 'description', 'club_logo']
-
+    fields = ['club_name', 'owner', 'email_club', 'address', 'club_phone_number', 'description', 'club_logo']
+    template_name_suffix = '_update_form'
     template_name = 'web/club_edit.html'
 
     def get_success_url(self):
@@ -135,4 +140,3 @@ class ClubEditView(views.UpdateView):
         if success_url:
             return success_url
         return super().get_success_url()
-

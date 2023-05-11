@@ -1,20 +1,46 @@
 {% extends 'bases/base.html' %}
 
-{% block co_base %}
-    <div class="body-f">
-        <h1 class="reg-club-section">Registration Club</h1>
-        <div class="form">
-            <form class="reg-club-form" method="post" action="{% url 'create club' %}" enctype="multipart/form-data">
+{% block co_club_registration %}
+     <div id="club-registration" class="club-reg">
+        <a href="/" ><i class="fa-solid fa-xmark fa-club"></i></a>
+            <form class="club-reg-form" method="post" action="{% url 'create club' %}" enctype="multipart/form-data">
                 {% csrf_token %}
-                {{ form }}
-                <div id="browse"><p>Browse logo...</p></div>
-                <input type="submit" value="Registration Club" />
+                <h2 class="club-form-heading">Club Registration</h2>
+                <div class="input-club">
+                    {{ form.club_name }}
+                    <span>Club Name</span>
+                </div>
+                <div class="input-club">
+                    {{ form.owner }}
+                    <span>Owner Name</span>
+                </div>
+                <div class="input-club">
+                    {{ form.email_club }}
+                    <span>Club Email</span>
+                </div>
+                <div class="input-club">
+                    {{ form.address_club }}
+                    <span>Club Address</span>
+                </div>
+                <div class="input-club">
+                    {{ form.club_phone }}
+                    <span>Club Phone Number</span>
+                </div>
+                <div class="input-club">
+                    {{ form.description_club}}
+                    <span>Description</span>
+                </div>
+                <div class="input-club">
+                    {{ form.club_logo }}
+                    <i class="fa-regular fa-image"></i>
+                    <p class="show-logo"></p>
+                    <span class="span-club-logo">Club Logo</span>
+                </div>
+                <button class="club-reg-btn">Registration</button>
             </form>
         </div>
-    </div>
     <script>
-    document.querySelectorAll('.drop-enter a').forEach(a => a.style.color = '#486F38');
-    let p_tag = document.querySelector('#browse p');
+    let p_tag = document.querySelector('.show-logo');
     document.querySelector('input[type=file]').addEventListener("change", () => {
         p_tag.textContent = document.querySelector('input[type=file]').files[0].name;
     })

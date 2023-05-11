@@ -1,29 +1,64 @@
 {% extends 'bases/base.html' %}
+{% load static %}
 
-{% block co_base %}
-    <div class="body-f">
-        <h1 class="register-section">Create Profile</h1>
-        <div class="register">
-            <form class="register-form" method="post" action="{% url 'registration' %}" enctype="multipart/form-data">
+{% block co_register %}
+    <div class="reg-box">
+        <a href="/" ><i class="fa-solid fa-xmark"></i></a>
+            <form class="reg-form" method="post" action="{% url 'registration' %}" enctype="multipart/form-data">
                 {% csrf_token %}
-                {{ form }}
-                <div id="browse"><p>Browse logo...</p></div>
-                <input type="submit" value="Create Profile" />
+                <h2 class="form-heading">Create Profile</h2>
+                <div class="input-box">
+                    {{ form.username }}
+                    <span>Username</span>
+                    <i></i>
+                </div>
+                <div class="input-box">
+                    {{ form.first_name }}
+                    <span>First name</span>
+                    <i></i>
+                </div>
+                <div class="input-box">
+                    {{ form.last_name }}
+                    <span>Last name</span>
+                    <i></i>
+                </div>
+                <div class="input-box">
+                    {{ form.email }}
+                    <span>Email</span>
+                    <i></i>
+                </div>
+                <div class="input-box">
+                    {{ form.password1 }}
+                    <span>Password</span>
+                    <i></i>
+                </div>
+                <div class="input-box">
+                    {{ form.password2 }}
+                    <span>Repeat Password</span>
+                    <i></i>
+                </div>
+                <div class="input-box">
+                    {{ form.phone_number }}
+                    <span>Phone number</span>
+                    <i></i>
+                </div>
+                <div class="input-box">
+                    {{ form.gender}}
+                    <span>Gender</span>
+                    <i></i>
+                </div>
+                <div class="input-box">
+                    {{ form.picture }}
+                    <span class="span-profile">Profile Picture</span>
+                    <i class="show-picture"></i>
+                </div>
+                <button class="reg-box-btn">SignUp</button>
             </form>
         </div>
-    </div>
     <script>
-        document.querySelectorAll('.drop-enter a').forEach(a => a.style.color = '#486F38');
-        let p_tag = document.querySelector('#browse p');
+        let p_tag = document.querySelector('.show-picture');
         document.querySelector('input[type=file]').addEventListener("change", () => {
             p_tag.textContent = document.querySelector('input[type=file]').files[0].name;
         })
-
-        let p_error = document.querySelector('.ph_error');
-        if (p_error.textContent) {
-            p_error.style.display = 'block';
-        }else {
-            p_error.style.display = 'none';
-        }
     </script>
 {% endblock %}

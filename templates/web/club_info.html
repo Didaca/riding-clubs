@@ -3,7 +3,7 @@
 
 
 {% block co_base %}
-     <div class="back-ground-club-info">
+     <section id="club-info" class="back-ground-club-info">
         <div class="main-div">
             <div class="first-div">
                 <div class="f-first-div">
@@ -56,22 +56,22 @@
                 <div class="s-first-div">
                     <div class="ff-s-first-div">
                         <div class="club-phone">
-                            <div><i class="fa fa-mobile-alt" style="font-size: 22px; color: #486F38;"></i></div>
+                            <i class="fa-solid fa-mobile-screen"></i>
                             <p>{{ club.club_phone_number }}</p>
                         </div>
                         <div class="club-address">
-                            <div><i class="fa fa-house-user" style="font-size: 22px; color: #486F38"></i></div>
+                            <i class="fa-solid fa-warehouse"></i>
                             <p>{{ club.address }}</p>
                         </div>
                         <div class="club-email">
-                            <div><i class="fa fa-envelope" style="font-size: 22px; color: #486F38"></i></div>
+                            <i class="fa-regular fa-paper-plane"></i>
                             <p>{{ club.email_club }}</p>
                         </div>
                     </div>
                     <div class="ss-s-first-div">
                         {% if request.user.is_staff %}
                         <div class="club-edit">
-                            <a href="{% url 'edit club' club.pk %}" >Edit Club</a>
+                            <a href="{% url 'edit club' club.pk %}#edit-club" >Edit Club</a>
                         </div>
                         {% endif %}
                     </div>
@@ -112,12 +112,5 @@
                 {% endfor %}
             </div>
         </div>
-     </div>
-    <script>
-        document.querySelector('section').classList.add('info-section')
-        document.querySelectorAll('.drop-enter a').forEach(a => a.style.color = '#486F38');
-    </script>
+     </section>
 {% endblock %}
-
-
-

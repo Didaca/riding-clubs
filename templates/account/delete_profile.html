@@ -1,15 +1,14 @@
 {% extends 'bases/base.html' %}
 {% load static %}
 
-{% block co_base %}
-    <div class="body-f">
+{% block co_delete_profile %}
+    <div id="del-profile" class="del-profile">
         <div class="delete-text">
             <h3>Are you sure you want to delete your profile?</h3>
-            <form class="delete-profile" method="post" action="{% url 'delete profile' object.pk %}" enctype="multipart/form-data">
+            <form class="del-profile-form" method="post" action="{% url 'delete profile' object.pk %}" enctype="multipart/form-data">
                 {% csrf_token %}
-                <input type="submit" value="Delete">
+                <button class="edit-btn del-btn">Delete</button>
             </form>
         </div>
     </div>
-    <script>document.querySelectorAll('.drop-enter a').forEach(a => a.style.color = '#486F38');</script>
 {% endblock %}

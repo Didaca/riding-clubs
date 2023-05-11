@@ -1,182 +1,237 @@
-.body-f {
-    display: flex;
-    flex-direction: column;
-    min-height: 850px;
-    width: 280px;
-    margin: 0 auto 6rem auto;
-    box-sizing: border-box;
+.box,
+.reg-box {
+    position: absolute;
+    top: 230px;
+    left: 300px;
+    width: 380px;
+    height: 400px;
+    background: var(--form-backrgb);
+    border-radius: 8px;
+    overflow: hidden;
+    z-index: 1;
 }
 
-.register-section, .login-section, .pay-section, .reg-club-section {
-    font-size: 40px;
-    margin: 3rem auto;
+.reg-box {
+    width: 760px;
+    height: 680px;
+    left: 195px;
+}
+
+.fa-solid.fa-xmark {
+    position: absolute;
+    color: var(--user-backrgb);
+    top: 12px;
+    right: 16px;
+    z-index: 12;
+    cursor: pointer;
+}
+
+.box::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 380px;
+    height: 420px;
+    background: linear-gradient(0deg, rgb(84, 233, 84), rgb(84, 233, 84), rgb(84, 233, 84));
+    transform-origin: bottom right;
+    animation: animate 6s linear infinite;
+}
+
+.reg-box::before {
+    content: '';
+    position: absolute;
+    top: 6%;
+    left: -25%;
+    width: 550px;
+    height: 300px;
+    background: linear-gradient(0deg, rgb(84, 233, 84), rgb(84, 233, 84), rgb(84, 233, 84));
+    transform-origin: bottom right;
+    animation: animate 6s linear infinite;
+}
+
+.box::after {
+    content: '';
+    position: absolute;
+    right: -50%;
+    bottom: -50%;
+    width: 380px;
+    height: 420px;
+    background: linear-gradient(0deg, transparent, rgb(84, 233, 84), rgb(84, 233, 84));
+    transform-origin: top left;
+    animation: animate 3s linear infinite;
+}
+
+.reg-box::after {
+    content: '';
+    position: absolute;
+    right: -25%;
+    bottom: 8%;
+    width: 550px;
+    height: 300px;
+    background: linear-gradient(0deg, transparent, rgb(84, 233, 84), rgb(84, 233, 84));
+    transform-origin: top left;
+    animation: animate 3s linear infinite;
+}
+
+
+
+@keyframes animate {
+    0% {transform: rotate(0deg);}
+    100% {transform: rotate(360deg);}
+
+}
+
+.form,
+.reg-form {
+    position: absolute;
+    background: var(--form-backrgb);
+    border-radius: 8px;
+    inset: 2px;
+    z-index: 10;
+    padding: 40px 50px;
+}
+
+.reg-form {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 30px;
+}
+
+.form-heading{
     text-align: center;
-    color: #bc6c25;
+    color: var(--forms);
+    font-weight: 400;
+    letter-spacing: 1px;
 }
 
-
-form.register-form, form.login-form, form.reg-club-form {
-    width: 90%;
-    margin: auto;
-    color: #61754B;
-}
-
-form.register-form>span, select#id_gender {
-    padding-right: 3rem;
-}
-
-
-form.register-form input[type=text]:enabled,
-input[type=password]:enabled,
-input[type=email]:enabled{
-    width: 100%;
-    margin: 12px 0;
-}
-
-form.login-form input[type=text]:enabled,
-input[type=password]:enabled {
-    width: 100%;
-    margin: 12px 0;
-}
-
-form.register-form input[type=submit],
-form.login-form input[type=submit],
-form.reg-club-form input[type=submit] {
-    text-transform: uppercase;
-    width: 260px;
-    border-radius: 4px;
-    padding: 6px;
-    background-color: #61754B;
-    color: white;
-}
-
-form.login-form input[type=submit] {
-    margin-top: 30px;
-}
-
-form.delete-profile input[type=submit] {
-    text-transform: uppercase;
-    width: 260px;
-    margin-top: 16px;
-    border-radius: 4px;
-    padding: 6px;
-    background-color: red;
-    color: white;
-}
-
-form textarea {
-    width: 100%;
-    height: 60px;
-    resize: vertical;
-}
-
-.delete-text {
-    font-size: 40px;
-    margin-top: 10rem;
-    text-align: center;
-    color: red;
-}
-
-form input[type=text]:focus,
-input[type=password]:focus,
-input[type=email]:focus,
-textarea:focus {
-    border: 2px solid #486F38;
-    outline: none;
-}
-
-form input[type=text]:hover,
-input[type=password]:hover,
-input[type=email]:hover {
-    border: 2px solid darkgoldenrod;
-    border-radius: 4px;
-}
-
-form.register-form input[type=submit]:hover,
-form.login-form input[type=submit]:hover,
-form.reg-club-form input[type=submit]:hover {
-    cursor: pointer;
-    border: 2px solid darkgoldenrod;
-    border-radius: 4px;
-    background-color: white;
-    color: #486F38;
-}
-
-
-form>input[type=file] {
-    opacity: 0;
-    width: 260px;
-    height: 22px;
-}
-
-form>input[type=file]:hover {
-    cursor: pointer;
-}
-
-form.delete-profile input[type=submit]:hover {
-    cursor: pointer;
-    border: 2px solid red;
-    border-radius: 4px;
-    background-color: white;
-    color: red;
-}
-
-div#browse {
-    display: flex;
-    flex-direction: row;
+.input-box {
     position: relative;
-    border-bottom: 2px solid;
-    width: 260px;
-    bottom: 44px;
-    margin: 0;
-    z-index: -1;
+    width: 280px;
+    height: 45px;
 }
 
-div#browse p {
+.form .input-box:not(:nth-child(2)) {
+    margin-top: 35px;
+}
+
+.input-box .input[type=text],
+.input-box .input[type=password],
+.input-box .input[type=email],
+.input-box .input[type=file] {
+    position: relative;
+    width: 100%;
+    padding: 10px 5px 5px;
+    background: transparent;
+    border: none;
+    outline: none;
+    font-size: 20px;
+    letter-spacing: 1px;
+    z-index: 10;
+}
+
+.input-box .input[type=file] {
+    cursor: pointer;
+}
+
+.input-box .input[type=file]:hover ~ .span-profile {
+    color: var(--forms);
+}
+
+.input-box .input[type=file]:hover ~ .span-club-logo {
+    color: var(--forms);
+}
+
+.input-box span {
+    position: absolute;
+    left: 0;
+    color: var(--user-backrgb);
+    padding: 10px 5px 5px;
+    font-size: 18px;
+    letter-spacing: 1px;
+    pointer-events: none;
+    transition: 0.5s;
+    z-index: 10;
+}
+
+.input-box .input:valid ~ span,
+.input-box .input:focus ~ span {
+    color: var(--forms);
+    font-size: 12px;
+    transform: translateY(-30px);
+}
+
+.input-box i {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    height: 2px;
+    pointer-events: none;
+    background: var(--forms);
     border-radius: 4px;
+    transition: 0.5s;
 }
 
-select,
-div#browse p {
-    color: white;
-    background-color: #9D886C;
+.input-box .input:valid ~ i,
+.input-box .input:focus ~ i {
+    height: 36px;
 }
 
-.login>div {
-    margin-top: 2rem;
-    text-align: center;
-    width: 260px;
-    margin-left: 1rem;
-    color: #5e503f;
+.phone::placeholder {
+    color: var(--form-backrgb);
 }
 
-.login>div>p {
+.gen-selector {
+    position: absolute;
+    top: 4px;
+    left: 180px;
+    background-color: var(--form-backrgb);
+    border: none;
+    color: var(--forms);
+    padding: 4px;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.links {
     display: flex;
-    width: 100%;
-    font-size: 25px;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
+    justify-content: space-between;
 }
 
-.login>div>p:before, .login>div>p:after {
-    content: "";
-    border-top: 2px solid;
-    flex: 1 0 0;
-    margin: 0 0 -4px 0;
-    color: #5e503f;
-}
-
-.login>div>a#go-to-register {
-    display: block;
-    width: 100%;
+.links a {
     text-decoration: none;
-    text-transform: uppercase;
-    color: #5e503f;
-    border: 2px solid transparent;
-    border-radius: 4px;
+    margin: 12px 0;
+    color: var(--user-backrgb);
 }
 
-.login>div>a#go-to-register:hover {
-    border: 2px solid;
+.links a:hover {
+    color: rgb(84, 233, 84);
+}
+
+.links a:nth-child(2) {
+    color: rgb(84, 233, 84);
+}
+
+.login-box-btn,
+.reg-box-btn {
+    margin: 30px 0;
+    width: 100%;
+    letter-spacing: 1px;
+    color: var(--forms);
+    background: var(--form-backrgb);
+    border: 2px solid var(--forms);
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.reg-box-btn {
+    width: 280px;
+}
+
+.login-box-btn:hover,
+.reg-box-btn:hover {
+    color: rgb(90, 88, 88);
+    background: var(--forms);
+    box-shadow: 0 0 18px var(--forms);
 }
