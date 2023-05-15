@@ -147,7 +147,7 @@ fieldset {
 .cl-ed-form > p > input[type=file],
 .pf-ed-form > p > input[type=file] {
     position: absolute;
-    width: 240px;
+    width: 310px;
     height: 52px;
     top: 75px;
     left: 75px;

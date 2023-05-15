@@ -3,7 +3,7 @@ import os
 from django.http import Http404
 from django.shortcuts import redirect
 from django.views.generic import DetailView
-from django.views.generic.edit import UpdateView, CreateView, DeleteView
+from django.views.generic.edit import UpdateView, DeleteView, CreateView
 from django.contrib.auth.views import LoginView, LogoutView, PasswordChangeView
 from django.urls import reverse_lazy, reverse
 from django.contrib.auth import login, authenticate
@@ -16,17 +16,11 @@ class UserRegistrationView(CreateView):
     form_class = UserRegistrationForm
     template_name = 'account/create_profile.html'
 
-    success_url = reverse_lazy('list clubs')
-
     def get_success_url(self):
-        if self.success_url:
-            return self.success_url
+        success_url = reverse_lazy('list clubs')
+        if success_url:
+            return success_url
         return super().get_success_url()
-
-    def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)
-        context['form'] = UserRegistrationForm()
-        return context
 
     def form_valid(self, form):
         form.save()

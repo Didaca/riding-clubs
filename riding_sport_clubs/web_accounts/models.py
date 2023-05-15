@@ -3,6 +3,7 @@ from django.contrib.auth.models import PermissionsMixin
 from django.core.validators import MinLengthValidator
 from django.db import models
 from django.contrib.postgres.fields import ArrayField
+from django.urls import reverse
 
 from riding_sport_clubs.base_validators.validators import name_validator, phone_number_validator
 from riding_sport_clubs.web_accounts.managers import Manager
@@ -85,3 +86,6 @@ class SiteUser(AbstractBaseUser, PermissionsMixin):
     @property
     def full_name(self):
         return f'{self.first_name} {self.last_name}'
+
+    def get_absolute_url(self):
+        return reverse('details profile', kwargs={'pk': self.pk})

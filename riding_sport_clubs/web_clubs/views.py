@@ -3,7 +3,7 @@ from django.views import generic as views
 from django.shortcuts import render, redirect
 
 from riding_sport_clubs.web_accounts.models import SiteUser
-from riding_sport_clubs.web_clubs.forms import CreateClubForm, EditClubForm
+from riding_sport_clubs.web_clubs.forms import ClubForm
 from riding_sport_clubs.web_clubs.models import Club, HorseBreed
 
 
@@ -73,6 +73,7 @@ class HomeView(views.TemplateView):
 
 
 class ClubsListView(views.ListView):
+    context_object_name = 'object_list'
     model = Club
     template_name = 'web/clubs_list.html'
     ordering = ('-award_gold', '-award_silver', '-award_bronze',)
@@ -82,34 +83,20 @@ class ClubsListView(views.ListView):
         queryset.prefetch_related('trainer_set')
         return queryset
 
-    def get_context_data(self, **kwargs):
-        context = super().get_context_data()
-        try:
-            user_object = SiteUser.objects.get(pk=self.request.user.pk)
-            context['object'] = user_object
-        except SiteUser.DoesNotExist:
-            context['object'] = None
-        return context
-
 
 class ClubCreateView(views.CreateView):
-    form_class = CreateClubForm
+    form_class = ClubForm
     template_name = 'web/create_club.html'
     success_url = reverse_lazy('list clubs')
 
     def dispatch(self, request, *args, **kwargs):
         if request.user.is_staff is False:
             return redirect('authorization')
-
         return super().dispatch(request, *args, **kwargs)
-
-    def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)
-        context['form'] = CreateClubForm()
-        return context
 
 
 class ClubDetailsView(views.DetailView):
+    context_object_name = 'club'
     model = Club
     template_name = 'web/club_info.html'
 
@@ -121,7 +108,7 @@ class ClubDetailsView(views.DetailView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data()
         try:
-            user_object = SiteUser.objects.get(pk=self.request.user.pk)
+            user_object = SiteUser.objects.get(pk=self.request.user.pk).full_name
             context['object'] = user_object
         except SiteUser.DoesNotExist:
             context['object'] = None
@@ -131,7 +118,6 @@ class ClubDetailsView(views.DetailView):
 class ClubEditView(views.UpdateView):
     model = Club
     fields = ['club_name', 'owner', 'email_club', 'address', 'club_phone_number', 'description', 'club_logo']
-    template_name_suffix = '_update_form'
     template_name = 'web/club_edit.html'
 
     def get_success_url(self):

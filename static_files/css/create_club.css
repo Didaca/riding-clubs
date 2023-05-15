@@ -84,10 +84,12 @@
     resize: inherit;
 }
 
-.club_logo {
+.club_logo,
+.input-club input[name=club_logo] {
     width: 40px;
     left: 268px;
     cursor: pointer;
+    opacity: 0;
 }
 
 .fa-image {
@@ -132,4 +134,14 @@
 
 .club-reg-btn:hover {
     box-shadow: 0 0 4px var(--breed-letters);
+}
+
+.input-club .errorlist {
+    list-style: none;
+    position: relative;
+    margin: 0;
+    padding: 0;
+    display: inline-block;
+    top: 30px;
+    color: var(--access-tags);
 }

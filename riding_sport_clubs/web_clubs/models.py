@@ -1,6 +1,8 @@
 from django.contrib.auth.models import User
 from django.core.validators import MinLengthValidator, MinValueValidator
 from django.db import models
+from django.urls import reverse
+
 from riding_sport_clubs.base_validators.validators import owner_name_validator, name_validator, phone_number_validator
 
 
@@ -75,6 +77,9 @@ class Club(models.Model):
 
     def __str__(self):
         return self.club_name
+
+    def get_absolute_url(self):
+        return reverse('club info', kwargs={'pk': self.pk})
 
 
 class Trainer(models.Model):
@@ -168,5 +173,3 @@ class HorseBreed(models.Model):
 
     def __str__(self):
         return self.breed
-
-

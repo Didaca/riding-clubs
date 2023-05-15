@@ -12,6 +12,8 @@ https://docs.djangoproject.com/en/4.0/ref/settings/
 import os
 import sys
 from pathlib import Path
+from dotenv import load_dotenv
+load_dotenv()
 
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -25,7 +27,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = os.getenv('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = os.getenv('DEBUG', False)
+DEBUG = os.getenv('DEBUG')
 
 ALLOWED_HOSTS = [
     'localhost',
@@ -82,29 +84,29 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'riding_sport_clubs.wsgi.application'
 
-# DATAB = os.getenv('DB')
-# if DATAB == 'Development':
-#     DATABASES = {
-#         'default': {
-#             'ENGINE': 'django.db.backends.postgresql',
-#             'NAME': os.getenv('DB_DEV_NAME', 'db_dev_name'),
-#             'USER': os.getenv('DB_DEV_USER', 'db_dev_user'),
-#             'PASSWORD': os.getenv('DB_DEV_PASS', 'db_dev_pass'),
-#             'HOST': os.getenv('DB_DEV_HOST', 'localhost'),
-#             'PORT': os.getenv('DB_DEV_PORT', '5432'),
-#         }
-#     }
-# else:
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'd1iovtpgjdqrjj',
-        'USER': 'zhvueowfbubonw',
-        'PASSWORD': '778a2f0296a48d104e7a8f6042283cfab15cd71628d75d68f48c4d7d4b8ca89d',
-        'HOST': 'ec2-99-81-16-126.eu-west-1.compute.amazonaws.com',
-        'PORT': '5432',
+DATA_BASES = os.getenv('DB')
+if DATA_BASES == 'Development':
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.postgresql',
+            'NAME': os.getenv('DB_DEV_NAME'),
+            'USER': os.getenv('DB_DEV_USER'),
+            'PASSWORD': os.getenv('DB_DEV_PASS'),
+            'HOST': os.getenv('DB_DEV_HOST'),
+            'PORT': os.getenv('DB_DEV_PORT'),
+        }
     }
-}
+else:
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.postgresql',
+            'NAME': os.getenv('DB_PRODUCTION_NAME'),
+            'USER': os.getenv('DB_PRODUCTION_USER'),
+            'PASSWORD': os.getenv('DB_PRODUCTION_PASS'),
+            'HOST': os.getenv('DB_PRODUCTION_HOST'),
+            'PORT': os.getenv('DB_PRODUCTION_PORT'),
+        }
+    }
 
 if 'test' in sys.argv:
     DATABASES = {

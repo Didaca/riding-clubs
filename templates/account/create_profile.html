@@ -4,21 +4,24 @@
 {% block co_register %}
     <div class="reg-box">
         <a href="/" ><i class="fa-solid fa-xmark"></i></a>
-            <form class="reg-form" method="post" action="{% url 'registration' %}" enctype="multipart/form-data">
+            <form class="reg-form" method="POST" >
                 {% csrf_token %}
                 <h2 class="form-heading">Create Profile</h2>
                 <div class="input-box">
                     {{ form.username }}
+                    {{ form.errors.username }}
                     <span>Username</span>
                     <i></i>
                 </div>
                 <div class="input-box">
                     {{ form.first_name }}
+                    {{ form.errors.first_name }}
                     <span>First name</span>
                     <i></i>
                 </div>
                 <div class="input-box">
                     {{ form.last_name }}
+                    {{ form.errors.last_name }}
                     <span>Last name</span>
                     <i></i>
                 </div>
@@ -29,16 +32,19 @@
                 </div>
                 <div class="input-box">
                     {{ form.password1 }}
+                    {{ form.errors.password1 }}
                     <span>Password</span>
                     <i></i>
                 </div>
                 <div class="input-box">
                     {{ form.password2 }}
+                    {{ form.errors.password2 }}
                     <span>Repeat Password</span>
                     <i></i>
                 </div>
                 <div class="input-box">
                     {{ form.phone_number }}
+                    {{ form.errors.phone_number }}
                     <span>Phone number</span>
                     <i></i>
                 </div>
@@ -50,9 +56,10 @@
                 <div class="input-box">
                     {{ form.picture }}
                     <span class="span-profile">Profile Picture</span>
+                    <i class="fa-regular fa-image"></i>
                     <i class="show-picture"></i>
                 </div>
-                <button class="reg-box-btn">SignUp</button>
+                <button class="reg-box-btn" formaction="{% url 'registration' %}" formenctype="multipart/form-data">SignUp</button>
             </form>
         </div>
     <script>

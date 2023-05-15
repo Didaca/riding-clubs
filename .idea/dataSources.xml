@@ -10,5 +10,12 @@
       <jdbc-url>jdbc:postgresql://127.0.0.1:5432/site_db</jdbc-url>
       <working-dir>$ProjectFileDir$</working-dir>
     </data-source>
+    <data-source source="LOCAL" name="778a2f0296a48d104e7a8f6042283cfab15cd71628d75d68f48c4d7d4b8ca89d" uuid="a891805b-8fa0-48bd-92ae-2f1c19a43ae3">
+      <driver-ref>postgresql</driver-ref>
+      <synchronize>true</synchronize>
+      <jdbc-driver>org.postgresql.Driver</jdbc-driver>
+      <jdbc-url>jdbc:postgresql://ec2-99-81-16-126.eu-west-1.compute.amazonaws.com:5432/d1iovtpgjdqrjj</jdbc-url>
+      <working-dir>$ProjectFileDir$</working-dir>
+    </data-source>
   </component>
 </project>

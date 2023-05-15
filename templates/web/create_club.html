@@ -8,10 +8,12 @@
                 <h2 class="club-form-heading">Club Registration</h2>
                 <div class="input-club">
                     {{ form.club_name }}
+                    {{ form.errors.club_name }}
                     <span>Club Name</span>
                 </div>
                 <div class="input-club">
                     {{ form.owner }}
+                    {{ form.errors.owner }}
                     <span>Owner Name</span>
                 </div>
                 <div class="input-club">
@@ -19,15 +21,16 @@
                     <span>Club Email</span>
                 </div>
                 <div class="input-club">
-                    {{ form.address_club }}
+                    {{ form.address }}
                     <span>Club Address</span>
                 </div>
                 <div class="input-club">
-                    {{ form.club_phone }}
+                    {{ form.club_phone_number }}
+                    {{ form.errors.club_phone_number }}
                     <span>Club Phone Number</span>
                 </div>
                 <div class="input-club">
-                    {{ form.description_club}}
+                    {{ form.description }}
                     <span>Description</span>
                 </div>
                 <div class="input-club">
