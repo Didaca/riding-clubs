@@ -100,11 +100,11 @@ WSGI_APPLICATION = 'riding_sport_clubs.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': os.getenv('DB_PRODUCTION_NAME'),
-        'USER': os.getenv('DB_PRODUCTION_USER'),
-        'PASSWORD': os.getenv('DB_PRODUCTION_PASS'),
-        'HOST': os.getenv('DB_PRODUCTION_HOST'),
-        'PORT': os.getenv('DB_PRODUCTION_PORT'),
+        'NAME': 'd1iovtpgjdqrjj',
+        'USER': 'zhvueowfbubonw',
+        'PASSWORD': '778a2f0296a48d104e7a8f6042283cfab15cd71628d75d68f48c4d7d4b8ca89d',
+        'HOST': 'ec2-99-81-16-126.eu-west-1.compute.amazonaws.com',
+        'PORT': '5432',
     }
 }
 
@@ -112,11 +112,11 @@ if 'test' in sys.argv:
     DATABASES = {
         'default': {
             'ENGINE': 'django.db.backends.postgresql',
-            'NAME': 'd1iovtpgjdqrjj',
-            'USER': 'zhvueowfbubonw',
-            'PASSWORD': '778a2f0296a48d104e7a8f6042283cfab15cd71628d75d68f48c4d7d4b8ca89d',
-            'HOST': 'ec2-99-81-16-126.eu-west-1.compute.amazonaws.com',
-            'PORT': '5432',
+            'NAME': os.getenv('DB_DEV_NAME'),
+            'USER': os.getenv('DB_DEV_USER'),
+            'PASSWORD': os.getenv('DB_DEV_PASS'),
+            'HOST': os.getenv('DB_DEV_HOST'),
+            'PORT': os.getenv('DB_DEV_PORT'),
         }
     }
 
