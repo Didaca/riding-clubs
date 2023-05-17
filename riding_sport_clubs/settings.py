@@ -84,29 +84,29 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'riding_sport_clubs.wsgi.application'
 
-DATA_BASES = os.getenv('DB')
-if DATA_BASES == 'Development':
-    DATABASES = {
-        'default': {
-            'ENGINE': 'django.db.backends.postgresql',
-            'NAME': os.getenv('DB_DEV_NAME'),
-            'USER': os.getenv('DB_DEV_USER'),
-            'PASSWORD': os.getenv('DB_DEV_PASS'),
-            'HOST': os.getenv('DB_DEV_HOST'),
-            'PORT': os.getenv('DB_DEV_PORT'),
-        }
+# DATA_BASES = os.getenv('DB')
+# if DATA_BASES == 'Development':
+#     DATABASES = {
+#         'default': {
+#             'ENGINE': 'django.db.backends.postgresql',
+#             'NAME': os.getenv('DB_DEV_NAME'),
+#             'USER': os.getenv('DB_DEV_USER'),
+#             'PASSWORD': os.getenv('DB_DEV_PASS'),
+#             'HOST': os.getenv('DB_DEV_HOST'),
+#             'PORT': os.getenv('DB_DEV_PORT'),
+#         }
+#     }
+# else:
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': os.getenv('DB_PRODUCTION_NAME'),
+        'USER': os.getenv('DB_PRODUCTION_USER'),
+        'PASSWORD': os.getenv('DB_PRODUCTION_PASS'),
+        'HOST': os.getenv('DB_PRODUCTION_HOST'),
+        'PORT': os.getenv('DB_PRODUCTION_PORT'),
     }
-else:
-    DATABASES = {
-        'default': {
-            'ENGINE': 'django.db.backends.postgresql',
-            'NAME': os.getenv('DB_PRODUCTION_NAME'),
-            'USER': os.getenv('DB_PRODUCTION_USER'),
-            'PASSWORD': os.getenv('DB_PRODUCTION_PASS'),
-            'HOST': os.getenv('DB_PRODUCTION_HOST'),
-            'PORT': os.getenv('DB_PRODUCTION_PORT'),
-        }
-    }
+}
 
 if 'test' in sys.argv:
     DATABASES = {
