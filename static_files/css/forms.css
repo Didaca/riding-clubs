@@ -4,7 +4,7 @@
     top: 230px;
     left: 300px;
     width: 380px;
-    height: 400px;
+    height: 420px;
     background: var(--form-backrgb);
     border-radius: 8px;
     overflow: hidden;
@@ -29,25 +29,25 @@
 .box::before {
     content: '';
     position: absolute;
-    top: -50%;
+    top: -30%;
     left: -50%;
     width: 380px;
-    height: 420px;
+    height: 300px;
     background: linear-gradient(0deg, rgb(84, 233, 84), rgb(84, 233, 84), rgb(84, 233, 84));
     transform-origin: bottom right;
-    animation: animate 6s linear infinite;
+    animation: rotationBox 6s linear infinite;
 }
 
 .reg-box::before {
     content: '';
     position: absolute;
-    top: 6%;
+    top: 3%;
     left: -25%;
     width: 550px;
     height: 300px;
     background: linear-gradient(0deg, rgb(84, 233, 84), rgb(84, 233, 84), rgb(84, 233, 84));
     transform-origin: bottom right;
-    animation: animate 6s linear infinite;
+    animation: rotationBox 6s linear infinite;
 }
 
 .box::after {
@@ -59,24 +59,24 @@
     height: 420px;
     background: linear-gradient(0deg, transparent, rgb(84, 233, 84), rgb(84, 233, 84));
     transform-origin: top left;
-    animation: animate 3s linear infinite;
+    animation: rotationBox 3s linear infinite;
 }
 
 .reg-box::after {
     content: '';
     position: absolute;
-    right: -25%;
-    bottom: 8%;
+    right: -20%;
+    bottom: 9%;
     width: 550px;
     height: 300px;
     background: linear-gradient(0deg, transparent, rgb(84, 233, 84), rgb(84, 233, 84));
     transform-origin: top left;
-    animation: animate 3s linear infinite;
+    animation: rotationBox 3s linear infinite;
 }
 
 
 
-@keyframes animate {
+@keyframes rotationBox {
     0% {transform: rotate(0deg);}
     100% {transform: rotate(360deg);}
 
@@ -89,7 +89,7 @@
     border-radius: 8px;
     inset: 2px;
     z-index: 10;
-    padding: 40px 50px;
+    padding: 40px 25px;
 }
 
 .reg-form {
@@ -124,7 +124,7 @@
 }
 
 .form .input-box:not(:nth-child(2)) {
-    margin-top: 35px;
+    margin-top: 25px;
 }
 
 .input-box .input[type=text],
@@ -267,4 +267,18 @@
     color: rgb(90, 88, 88);
     background: var(--forms);
     box-shadow: 0 0 18px var(--forms);
+}
+
+/* error message */
+
+.err-login.err-message {
+    display: inline-block;
+    position: relative;
+    top: 8px;
+    font-size: 14px;
+    letter-spacing: 1px;
+    color: var(--forms);
+    background-color: var(--form-backrgb);
+    padding: 6px 0;
+    border-radius: 8px;
 }

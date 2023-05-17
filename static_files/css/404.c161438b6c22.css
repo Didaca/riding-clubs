@@ -19,7 +19,7 @@
     100% {transform: rotateX(-30deg) rotateY(360deg);}
 }
 
-.cube div {
+.cube div:nth-child(2) {
     position: absolute;
     top: 0;
     left: 0;
@@ -28,7 +28,7 @@
     transform-style: preserve-3d;
 }
 
-.cube div span {
+.cube div:nth-child(2) span {
     position: absolute;
     top: 0;
     left: 0;

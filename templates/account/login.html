@@ -4,24 +4,31 @@
 {% block co_login %}
     <div class="box">
         <a href="/" ><i class="fa-solid fa-xmark"></i></a>
-            <form class="form" method="post" action="{% url 'login' %}" enctype="multipart/form-data">
-                {% csrf_token %}
-                <h2 class="form-heading">Sign In</h2>
-                <div class="input-box">
-                    {{ form.username }}
-                    <span>Username</span>
-                    <i></i>
-                </div>
-                <div class="input-box">
-                    {{ form.password }}
-                    <span>Password</span>
-                    <i></i>
-                </div>
-                <div class="links">
-                    <a href="#">Forgot Password</a>
-                    <a href="{% url 'registration' %}">Sign up</a>
-                </div>
-                <button class="login-box-btn">Log in</button>
-            </form>
-        </div>
+        <form class="form" method="post" action="{% url 'login' %}" enctype="multipart/form-data">
+            {% csrf_token %}
+            <h2 class="form-heading">Sign In</h2>
+            <div class="input-box">
+                {{ form.username }}
+                <span>Username</span>
+                <i></i>
+            </div>
+            <div class="input-box">
+                {{ form.password }}
+                <span>Password</span>
+                <i></i>
+            </div>
+            <div class="links">
+                <a href="#">Forgot Password</a>
+                <a href="{% url 'registration' %}">Sign up</a>
+            </div>
+            {% if messages %}
+            {% for message in messages %}
+            <p class="err-login err-message">
+            {{ message }}
+            </p>
+            {% endfor %}
+            {% endif %}
+            <button class="login-box-btn">Log in</button>
+        </form>
+    </div>
 {% endblock %}

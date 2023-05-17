@@ -1,12 +1,13 @@
 import os
 
 from django.http import Http404
-from django.shortcuts import redirect
+from django.shortcuts import redirect, render
 from django.views.generic import DetailView
 from django.views.generic.edit import UpdateView, DeleteView, CreateView
 from django.contrib.auth.views import LoginView, LogoutView, PasswordChangeView
 from django.urls import reverse_lazy, reverse
 from django.contrib.auth import login, authenticate
+from django.contrib import messages
 
 from riding_sport_clubs.web_accounts.forms import UserRegistrationForm, UserLoginForm
 from riding_sport_clubs.web_accounts.models import SiteUser
@@ -38,6 +39,11 @@ class UserLoginView(LoginView):
         context = super().get_context_data(**kwargs)
         context['form'] = UserLoginForm()
         return context
+
+    def form_invalid(self, form):
+        form = UserLoginForm()
+        messages.error(self.request, "Your username and/or password didn't match. Please try again or Sing up.")
+        return render(self.request, 'account/login.html', {'form': form})
 
 
 class UserLogoutView(LogoutView):
